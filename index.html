@@ -82,19 +82,15 @@
                     <div class="row align-items-center g-5">
                         <div class="col-lg-6 text-center text-lg-start">
                             <h1 class="display-3 text-white animated slideInLeft">Blokus</h1>
-                            <div class="center">
-                                <button id="open-popup">Play</button>
-                            </div>
-                            <div class="popup" id="popup">
-                                <div class="overlay"></div>
-                                <div class="popup-content">
-                                    <h2>How do you want to play?</h2>
-                                    <div class="controls">
-                                        <button class="close-btn">Singleplayer</button>
-                                        <button class="submit-btn">Multiplayer</button>
-                                    </div>    
-                                </div>
-                            </div>
+                            
+                            <div class="popup" onclick="selectMode()">Click to Select Mode!
+                                <span class="popuptext" id="myPopup">
+                                        <div class="controls">
+                                           <button class="close-btn" onclick="Singleplayer()">Singleplayer</button>
+                                           <button class="submit-btn" onclick="Multiplayer()">Multiplayer</button>
+                                      </div> 
+                                </span>
+                              </div>
                             
                             
                            
