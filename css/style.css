@@ -128,14 +128,29 @@
 
 /* Popup container - can be anything you want */
 .popup {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
+	border-bottom-color: #FF6600;
+	border-top-color: #FF6600;
+	border-right-color: #FF6600;
+	border-left-color: #FF6600;
+	border-left: 1rem solid;
+	border-right: 1rem solid;
+	border-top: 1rem solid;
+	border-color: #FF6600;
+	border-bottom: 1rem solid;
+	border-radius: 8px 10px 12px 14px;
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	background-color: #FF6600;
+	color: #000000;
+	border-bottom-width: 1rem solid;
+	font-family: "Russo One";
+	border-bottom-style: double;
+}
   
   /* The actual popup */
   .popup .popuptext {
@@ -253,6 +268,9 @@
         background: var(--dark) !important;
     }
 }
+
+
+
 
 .closedcenter-header img {
     animation: imgRotate 50s linear infinite;
