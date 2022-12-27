@@ -147,5 +147,5 @@ function selectMode() {
 }
 
 function Multiplayer() {
-	alert("Multiplayer");
+	window.location.href="login/login.html";
 }
