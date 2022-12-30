@@ -29,7 +29,7 @@ session_start();
 					if($user_data['password'] === $password)
 					{
 						$_SESSION['id'] = $user_data['id'];
-						header("Location: game.php");
+						header("Location: ./game.php");
 						die;
 					}
 				}

@@ -6,7 +6,7 @@
         {
     
             $id = $_SESSION['id'];
-            $query = "select * from users where user_id = '$id' limit 1";
+            $query = "select * from users where id = '$id' limit 1";
     
             $result = mysqli_query($con,$query);
             if($result && mysqli_num_rows($result) > 0)
