@@ -147,5 +147,5 @@ function selectMode() {
 }
 
 function Multiplayer() {
-	window.location.href="ADISE22_EternalOnes/php/login.php";
+	window.location.href="php/login.php";
 }
