@@ -13,7 +13,7 @@ form.addEventListener('submit', (e) => {
 });
 
 function redirect_reg () {
-window.location.href= "../register/register.html";
+window.location.href= "../php/register.php";
 }
 
 

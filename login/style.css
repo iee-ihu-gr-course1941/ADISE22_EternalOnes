@@ -80,7 +80,7 @@ body {
   -webkit-box-direction: normal;
           flex-direction: row;
 }
-.login-form .action button {
+.login-form .action input {
   width: 100%;
   border: none;
   padding: 18px;
@@ -96,15 +96,15 @@ body {
   -webkit-transition: all .3s;
   transition: all .3s;
 }
-.login-form .action button:hover {
+.login-form .action input:hover {
   background: #d8d8d8;
 }
-.login-form .action button:nth-child(2) {
+.login-form .action input:nth-child(2) {
   background: #2d3b55;
   color: #fff;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 4px;
 }
-.login-form .action button:nth-child(2):hover {
+.login-form .action input:nth-child(2):hover {
   background: #3c4d6d;
 }
