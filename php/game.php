@@ -22,7 +22,7 @@ session_start();
 	<br>
 	Hello, <?php echo $user_data['username']; ?>
 
-	<form action="startTest()">
+	<form action="">
 		<button>Start</button>
 	</form>
 
