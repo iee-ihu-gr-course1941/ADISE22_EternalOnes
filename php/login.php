@@ -38,7 +38,7 @@ session_start();
 			$Error = "wrong username or password!";
 		}else
 		{
-			$Error = "wrong username or password!";
+			$Error = "username or password cannot be empty!";
 		}
 	}
 
