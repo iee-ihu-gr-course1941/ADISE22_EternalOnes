@@ -147,5 +147,5 @@ function selectMode() {
 }
 
 function Multiplayer() {
-	window.location.href="login/login.html";
+	window.location.href="../php/login.php";
 }
