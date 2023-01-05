@@ -65,8 +65,7 @@ session_start();
 <body>
 <!-- partial:index.partial.html -->
 <p>&nbsp;&nbsp;
-<img alt="" height="74" src="../login/logo.JPG" width="272" class="auto-style2"></p>
-<div class="login-form">
+
     <form class="" method="post">
     	<h1 class="auto-style1">Login</h1>
         <span style="font-size: 12px;color:red;">
