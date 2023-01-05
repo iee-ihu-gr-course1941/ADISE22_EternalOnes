@@ -65,7 +65,8 @@ session_start();
 <body>
 <!-- partial:index.partial.html -->
 <p>&nbsp;&nbsp;
-
+</p>
+<div class="login-form">
     <form class="" method="post">
     	<h1 class="auto-style1">Login</h1>
         <span style="font-size: 12px;color:red;">
