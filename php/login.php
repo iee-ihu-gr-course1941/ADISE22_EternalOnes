@@ -72,7 +72,7 @@ session_start();
 </p>
 <div class="login-form">
 	
-	<a href="index.html">
+	<a href="../index.html">
 	<span class="auto-style2" style="width: 88px; height: 21px; right: 265px">GO TO HOME</span></a>
     <form>
     	<h1 class="auto-style1">Login</h1>

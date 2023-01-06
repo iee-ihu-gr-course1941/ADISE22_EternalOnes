@@ -77,7 +77,7 @@ session_start();
                     <div class="row align-items-center g-5">
 
 						<div class="login-form">
-              <a href="index.html">
+              <a href="../index.html">
                 <span class="auto-style2" style="width: 88px; height: 21px; right: 265px">GO TO HOME</span></a>
               
   						  <form>
