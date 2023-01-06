@@ -1,6 +1,6 @@
 <?php
     $host='localhost';
-    $db = 'blockus';
+    $db = 'blokus';
     require_once "db_upass.php";
 
     $user=$DB_USER;
