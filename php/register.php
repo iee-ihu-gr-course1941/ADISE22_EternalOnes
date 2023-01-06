@@ -41,8 +41,8 @@ session_start();
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>Register</title>
-  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Rubik:400,700'><link rel="stylesheet" href="../register/style.css">
+  <title>Simple Login Form Example</title>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Rubik:400,700'><link rel="stylesheet" href="./style.css">
 
   <style type="text/css">
 .auto-style3 {
@@ -57,61 +57,51 @@ session_start();
 
 </head>
 <body>
-<!-- <div class="container-xxl position-relative p-0">
+<div class="container-xxl position-relative p-0">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0" style="left: 0px; top: 0px">
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav ms-auto py-0 pe-4">
+ <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto py-0 pe-4">
                                                                            
                 <a href="" class="auto-style3">
-                    <h1>&nbsp;&nbsp;&nbsp;<a href="" class="auto-style3"><img alt="" height="74" src="../register/Καταγραφή.JPG" width="272"></a>&nbsp;&nbsp;
+                    <h1>&nbsp;&nbsp;&nbsp;<a href="" class="auto-style3"><img alt="" height="74" src="Καταγραφή.JPG" width="272"></a>&nbsp;&nbsp;
 					</a>&nbsp;&nbsp;&nbsp; </h1>
                     
                 </a>
                                                                            
-                </div>
+                        </div>
                         
-    </div>
+                </div>
             </nav>
 			<div class="container-xxl py-5 bg-dark closedcenter-header mb-5">
-            <div class="container my-5 py-5">
-            <div class="row align-items-center g-5"> -->
+                <div class="container my-5 py-5">
+                    <div class="row align-items-center g-5">
 
-			<div class="login-form">
-  			    <form class="" method="post">
-                    <h1 class="auto-style4">Register</h1>
-                    <span style="font-size: 12px;color:red;">
-                    <?php 
-                            if(isset($Error) && $Error != "")
-                            {
-                                echo $Error;
-                            }
-                    ?>
-                    </span>
-                    <br>
-                    <div class="content">
-                    <div class="input-field">
-                        <input type="text" placeholder="Username" autocomplete="nope" name="user_name">
-                    </div>
-                    <div class="input-field">
-                        <input type="password" placeholder="Password" autocomplete="new-password" name="password">
-                    </div>
-                    <div class="input-field">
-                        <input type="password" placeholder="Confirm Password" autocomplete="new-password" name="confirm_password">
-                    </div>
+						<div class="login-form">
+              <a href="index.html">
+                <span class="auto-style2" style="width: 88px; height: 21px; right: 265px">GO TO HOME</span></a>
+              
+  						  <form>
+    						  <h1 class="auto-style4">Register</h1>
+    <div class="content">
+      <div class="input-field">
+        <input type="text" placeholder="Username" autocomplete="nope">
+      </div>
+      <div class="input-field">
+        <input type="password" placeholder="Password" autocomplete="new-password">
+      </div>
+      <div class="input-field">
+        <input type="password" placeholder="Confirm Password" autocomplete="new-password">
+      </div>
 
-                    </div>
-                    <div class="action">
-                    <input type="submit" value="Signup">
-                    
-                    </div>
-                </form>
-            </div>
-            <!-- </div>
-            </div>
-            </div>
-</div> -->
+    </div>
+    <div class="action">
+      <input type="button" value="Register">
+      
+    </div>
+  </form>
+</div>
 <!-- partial -->
-  <script  src="../register/script.js"></script>
+  <script  src="./script.js"></script>
 
 </body>
 </html>
