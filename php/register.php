@@ -42,7 +42,7 @@ session_start();
 <head>
   <meta charset="UTF-8">
   <title>Simple Login Form Example</title>
-  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Rubik:400,700'><link rel="stylesheet" href="./style.css">
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Rubik:400,700'><link rel="stylesheet" href="../register/style.css">
 
   <style type="text/css">
 .auto-style3 {
@@ -84,24 +84,24 @@ session_start();
     						  <h1 class="auto-style4">Register</h1>
     <div class="content">
       <div class="input-field">
-        <input type="text" placeholder="Username" autocomplete="nope">
+        <input type="text" placeholder="Username" autocomplete="nope" name="user_name">
       </div>
       <div class="input-field">
-        <input type="password" placeholder="Password" autocomplete="new-password">
+        <input type="password" placeholder="Password" autocomplete="new-password" name="password">
       </div>
       <div class="input-field">
-        <input type="password" placeholder="Confirm Password" autocomplete="new-password">
+        <input type="password" placeholder="Confirm Password" autocomplete="new-password" name="confirm_password">
       </div>
 
     </div>
     <div class="action">
-      <input type="button" value="Register">
+      <input type="submit" value="Register">
       
     </div>
   </form>
 </div>
 <!-- partial -->
-  <script  src="./script.js"></script>
+  <script  src="../register/script.js"></script>
 
 </body>
 </html>
