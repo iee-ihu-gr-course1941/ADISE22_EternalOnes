@@ -11,7 +11,7 @@ session_start();
 		$password = $_POST['password'];
 		$con_pass = $_POST['confirm_password'];
 
-		$sname = mysqli_query($con, "SELECT * FROM users WHERE username = '". $_POST['user_name']."'");
+		$sname = mysqli_query($mysqli, "SELECT * FROM users WHERE username = '". $_POST['user_name']."'");
 			
 		if(mysqli_num_rows($sname)) {
 			$Error = "This username already exists";
@@ -27,7 +27,7 @@ session_start();
 			//$password = password_hash($password, PASSWORD_DEFAULT); for pass hashing
 			$query = "insert into users(username,password) values('$user_name','$password')";
 
-			mysqli_query($con,$query);
+			mysqli_query($mysqli,$query);
 
 			header("Location: login.php");
 			die;
