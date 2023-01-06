@@ -1,5 +1,5 @@
 <?php
-    function check_login($con)
+    function check_login($mysqli)
     {
     
         if(isset($_SESSION['id']))
@@ -8,7 +8,7 @@
             $id = $_SESSION['id'];
             $query = "select * from users where id = '$id' limit 1";
     
-            $result = mysqli_query($con,$query);
+            $result = mysqli_query($mysqli,$query);
             if($result && mysqli_num_rows($result) > 0)
             {
     
