@@ -57,7 +57,7 @@ session_start();
 
 </head>
 <body>
-<div class="container-xxl position-relative p-0">
+<!-- <div class="container-xxl position-relative p-0">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0" style="left: 0px; top: 0px">
  <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0 pe-4">
@@ -74,14 +74,23 @@ session_start();
             </nav>
 			<div class="container-xxl py-5 bg-dark closedcenter-header mb-5">
                 <div class="container my-5 py-5">
-                    <div class="row align-items-center g-5">
+                    <div class="row align-items-center g-5"> -->
 
-						<div class="login-form">
+	<div class="login-form">
               <a href="../index.html">
                 <span class="auto-style2" style="width: 88px; height: 21px; right: 265px">GO TO HOME</span></a>
               
-  						  <form>
-    						  <h1 class="auto-style4">Register</h1>
+  	<form class="" method="post">
+    	<h1 class="auto-style4">Register</h1>
+        <span style="font-size: 12px;color:red;">
+		<?php
+			if(isset($Error) && $Error !="")
+			{
+				echo $Error;
+			}
+		?>
+        </span>
+        <br>
     <div class="content">
       <div class="input-field">
         <input type="text" placeholder="Username" autocomplete="nope" name="user_name">

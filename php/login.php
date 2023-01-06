@@ -74,8 +74,17 @@ session_start();
 	
 	<a href="../index.html">
 	<span class="auto-style2" style="width: 88px; height: 21px; right: 265px">GO TO HOME</span></a>
-    <form>
+    <form class="" method="post">
     	<h1 class="auto-style1">Login</h1>
+		<span style="font-size: 12px;color:red;">
+		<?php
+			if(isset($Error) && $Error !="")
+			{
+				echo $Error;
+			}
+		?>
+		</span>
+		<br>
     <div class="content">
       <div class="input-field">
         <input type="text" placeholder="Username" autocomplete="nope" name="user_name">
