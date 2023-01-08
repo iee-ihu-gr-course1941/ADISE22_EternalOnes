@@ -891,6 +891,23 @@ CREATE TABLE IF NOT EXISTS `column_stats` (
 /*!40000 ALTER TABLE `column_stats` DISABLE KEYS */;
 /*!40000 ALTER TABLE `column_stats` ENABLE KEYS */;
 
+-- Dumping structure for procedure blokus.c_points
+DELIMITER //
+CREATE PROCEDURE `c_points`()
+BEGIN
+	DECLARE cb,cy,cr,cg INT;
+	
+	
+	
+	
+SET cb = (SELECT  COUNT(*) FROM board WHERE b_color='B');
+SET cy = (SELECT  COUNT(*) FROM board WHERE b_color='Y');
+SET cr = (SELECT  COUNT(*) FROM board WHERE b_color='R');
+SET cg = (SELECT  COUNT(*) FROM board WHERE b_color='G');
+
+END//
+DELIMITER ;
+
 -- Dumping structure for πίνακας blokus.db
 CREATE TABLE IF NOT EXISTS `db` (
   `Host` char(60) NOT NULL DEFAULT '',
@@ -2427,6 +2444,18 @@ INSERT INTO `pieces` (`pieces_color`, `pieces`) VALUES
 	('Y', 'I3'),
 	('Y', 'I2'),
 	('Y', 'I1');
+
+-- Dumping structure for procedure blokus.place_pieces
+DELIMITER //
+CREATE PROCEDURE `place_pieces`(x1 int,y1 int,sid int,b_color1 char)
+BEGIN
+
+	UPDATE board 
+	SET b_color = b_color1
+	WHERE x=x1 and y=y1 AND this.sid=sid;  
+
+END//
+DELIMITER ;
 
 -- Dumping structure for πίνακας blokus.players
 CREATE TABLE IF NOT EXISTS `players` (
