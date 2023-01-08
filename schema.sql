@@ -38,7 +38,7 @@ INSERT INTO `board` (`x`, `y`, `sid`, `b_color`) VALUES
 	(1, 2, 0, 'W'),
 	(1, 3, 0, 'W'),
 	(1, 4, 0, 'W'),
-	(1, 5, 0, 'W'),
+	(1, 5, 0, 'B'),
 	(1, 6, 0, 'W'),
 	(1, 7, 0, 'W'),
 	(1, 8, 0, 'W'),
@@ -1000,7 +1000,7 @@ CREATE TABLE IF NOT EXISTS `general_log` (
   `argument` mediumtext NOT NULL
 ) ENGINE=CSV DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='General log';
 
--- Dumping data for table blokus.general_log: 2 rows
+-- Dumping data for table blokus.general_log: 0 rows
 /*!40000 ALTER TABLE `general_log` DISABLE KEYS */;
 /*!40000 ALTER TABLE `general_log` ENABLE KEYS */;
 
@@ -2575,7 +2575,7 @@ CREATE TABLE IF NOT EXISTS `slow_log` (
   `rows_affected` int(11) NOT NULL
 ) ENGINE=CSV DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Slow log';
 
--- Dumping data for table blokus.slow_log: 2 rows
+-- Dumping data for table blokus.slow_log: 0 rows
 /*!40000 ALTER TABLE `slow_log` DISABLE KEYS */;
 /*!40000 ALTER TABLE `slow_log` ENABLE KEYS */;
 
@@ -2752,6 +2752,17 @@ INSERT INTO `users` (`id`, `username`, `password`) VALUES
 	(3, 'alex', _binary 0x313233),
 	(4, 'CaptainRexGr', _binary 0x3132333435363738),
 	(5, 'fng', _binary 0x676867);
+
+-- Dumping structure for trigger blokus.game_status_update
+SET @OLDTMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION';
+DELIMITER //
+CREATE TRIGGER game_status_update BEFORE UPDATE
+ON game_status
+FOR EACH ROW BEGIN
+SET NEW.last_change = NOW();
+END//
+DELIMITER ;
+SET SQL_MODE=@OLDTMP_SQL_MODE;
 
 -- Dumping structure for view blokus.user
 -- Removing temporary table and create final VIEW structure
