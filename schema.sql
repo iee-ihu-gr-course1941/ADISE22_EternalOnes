@@ -14,7 +14,7 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
--- Dumping structure for procedure mysql.AddGeometryColumn
+-- Dumping structure for procedure blokus.AddGeometryColumn
 DELIMITER //
 CREATE PROCEDURE `AddGeometryColumn`(catalog varchar(64), t_schema varchar(64),
    t_name varchar(64), geometry_column varchar(64), t_srid int)
@@ -23,833 +23,831 @@ begin
   set @qwe= concat('ALTER TABLE ', t_schema, '.', t_name, ' ADD ', geometry_column,' GEOMETRY REF_SYSTEM_ID=', t_srid); PREPARE ls from @qwe; execute ls; deallocate prepare ls; end//
 DELIMITER ;
 
--- Dumping structure for πίνακας mysql.board
+-- Dumping structure for πίνακας blokus.board
 CREATE TABLE IF NOT EXISTS `board` (
   `x` int(11) NOT NULL,
   `y` int(11) NOT NULL,
-  `pieces_color` enum('R','G','B','Y') DEFAULT NULL,
-  `pieces` enum('F','I','N','P','T','U','V','W','X','Y','Z','IM','LM','ZM','SQ','TM','LN','I3','I2','I1') DEFAULT NULL,
+  `sid` int(2) NOT NULL,
   `b_color` enum('R','W','G','B','Y') DEFAULT 'W',
-  PRIMARY KEY (`x`,`y`)
+  PRIMARY KEY (`x`,`y`,`sid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table mysql.board: ~400 rows (approximately)
-INSERT INTO `board` (`x`, `y`, `pieces_color`, `pieces`, `b_color`) VALUES
-	(1, 1, NULL, NULL, 'W'),
-	(1, 2, NULL, NULL, 'W'),
-	(1, 3, NULL, NULL, 'W'),
-	(1, 4, NULL, NULL, 'W'),
-	(1, 5, NULL, NULL, 'W'),
-	(1, 6, NULL, NULL, 'W'),
-	(1, 7, NULL, NULL, 'W'),
-	(1, 8, NULL, NULL, 'W'),
-	(1, 9, NULL, NULL, 'W'),
-	(1, 10, NULL, NULL, 'W'),
-	(1, 11, NULL, NULL, 'W'),
-	(1, 12, NULL, NULL, 'W'),
-	(1, 13, NULL, NULL, 'W'),
-	(1, 14, NULL, NULL, 'W'),
-	(1, 15, NULL, NULL, 'W'),
-	(1, 16, NULL, NULL, 'W'),
-	(1, 17, NULL, NULL, 'W'),
-	(1, 18, NULL, NULL, 'W'),
-	(1, 19, NULL, NULL, 'W'),
-	(1, 20, NULL, NULL, 'W'),
-	(2, 1, NULL, NULL, 'W'),
-	(2, 2, NULL, NULL, 'W'),
-	(2, 3, NULL, NULL, 'W'),
-	(2, 4, NULL, NULL, 'W'),
-	(2, 5, NULL, NULL, 'W'),
-	(2, 6, NULL, NULL, 'W'),
-	(2, 7, NULL, NULL, 'W'),
-	(2, 8, NULL, NULL, 'W'),
-	(2, 9, NULL, NULL, 'W'),
-	(2, 10, NULL, NULL, 'W'),
-	(2, 11, NULL, NULL, 'W'),
-	(2, 12, NULL, NULL, 'W'),
-	(2, 13, NULL, NULL, 'W'),
-	(2, 14, NULL, NULL, 'W'),
-	(2, 15, NULL, NULL, 'W'),
-	(2, 16, NULL, NULL, 'W'),
-	(2, 17, NULL, NULL, 'W'),
-	(2, 18, NULL, NULL, 'W'),
-	(2, 19, NULL, NULL, 'W'),
-	(2, 20, NULL, NULL, 'W'),
-	(3, 1, NULL, NULL, 'W'),
-	(3, 2, NULL, NULL, 'W'),
-	(3, 3, NULL, NULL, 'W'),
-	(3, 4, NULL, NULL, 'W'),
-	(3, 5, NULL, NULL, 'W'),
-	(3, 6, NULL, NULL, 'W'),
-	(3, 7, NULL, NULL, 'W'),
-	(3, 8, NULL, NULL, 'W'),
-	(3, 9, NULL, NULL, 'W'),
-	(3, 10, NULL, NULL, 'W'),
-	(3, 11, NULL, NULL, 'W'),
-	(3, 12, NULL, NULL, 'W'),
-	(3, 13, NULL, NULL, 'W'),
-	(3, 14, NULL, NULL, 'W'),
-	(3, 15, NULL, NULL, 'W'),
-	(3, 16, NULL, NULL, 'W'),
-	(3, 17, NULL, NULL, 'W'),
-	(3, 18, NULL, NULL, 'W'),
-	(3, 19, NULL, NULL, 'W'),
-	(3, 20, NULL, NULL, 'W'),
-	(4, 1, NULL, NULL, 'W'),
-	(4, 2, NULL, NULL, 'W'),
-	(4, 3, NULL, NULL, 'W'),
-	(4, 4, NULL, NULL, 'W'),
-	(4, 5, NULL, NULL, 'W'),
-	(4, 6, NULL, NULL, 'W'),
-	(4, 7, NULL, NULL, 'W'),
-	(4, 8, NULL, NULL, 'W'),
-	(4, 9, NULL, NULL, 'W'),
-	(4, 10, NULL, NULL, 'W'),
-	(4, 11, NULL, NULL, 'W'),
-	(4, 12, NULL, NULL, 'W'),
-	(4, 13, NULL, NULL, 'W'),
-	(4, 14, NULL, NULL, 'W'),
-	(4, 15, NULL, NULL, 'W'),
-	(4, 16, NULL, NULL, 'W'),
-	(4, 17, NULL, NULL, 'W'),
-	(4, 18, NULL, NULL, 'W'),
-	(4, 19, NULL, NULL, 'W'),
-	(4, 20, NULL, NULL, 'W'),
-	(5, 1, NULL, NULL, 'W'),
-	(5, 2, NULL, NULL, 'W'),
-	(5, 3, NULL, NULL, 'W'),
-	(5, 4, NULL, NULL, 'W'),
-	(5, 5, NULL, NULL, 'W'),
-	(5, 6, NULL, NULL, 'W'),
-	(5, 7, NULL, NULL, 'W'),
-	(5, 8, NULL, NULL, 'W'),
-	(5, 9, NULL, NULL, 'W'),
-	(5, 10, NULL, NULL, 'W'),
-	(5, 11, NULL, NULL, 'W'),
-	(5, 12, NULL, NULL, 'W'),
-	(5, 13, NULL, NULL, 'W'),
-	(5, 14, NULL, NULL, 'W'),
-	(5, 15, NULL, NULL, 'W'),
-	(5, 16, NULL, NULL, 'W'),
-	(5, 17, NULL, NULL, 'W'),
-	(5, 18, NULL, NULL, 'W'),
-	(5, 19, NULL, NULL, 'W'),
-	(5, 20, NULL, NULL, 'W'),
-	(6, 1, NULL, NULL, 'W'),
-	(6, 2, NULL, NULL, 'W'),
-	(6, 3, NULL, NULL, 'W'),
-	(6, 4, NULL, NULL, 'W'),
-	(6, 5, NULL, NULL, 'W'),
-	(6, 6, NULL, NULL, 'W'),
-	(6, 7, NULL, NULL, 'W'),
-	(6, 8, NULL, NULL, 'W'),
-	(6, 9, NULL, NULL, 'W'),
-	(6, 10, NULL, NULL, 'W'),
-	(6, 11, NULL, NULL, 'W'),
-	(6, 12, NULL, NULL, 'W'),
-	(6, 13, NULL, NULL, 'W'),
-	(6, 14, NULL, NULL, 'W'),
-	(6, 15, NULL, NULL, 'W'),
-	(6, 16, NULL, NULL, 'W'),
-	(6, 17, NULL, NULL, 'W'),
-	(6, 18, NULL, NULL, 'W'),
-	(6, 19, NULL, NULL, 'W'),
-	(6, 20, NULL, NULL, 'W'),
-	(7, 1, NULL, NULL, 'W'),
-	(7, 2, NULL, NULL, 'W'),
-	(7, 3, NULL, NULL, 'W'),
-	(7, 4, NULL, NULL, 'W'),
-	(7, 5, NULL, NULL, 'W'),
-	(7, 6, NULL, NULL, 'W'),
-	(7, 7, NULL, NULL, 'W'),
-	(7, 8, NULL, NULL, 'W'),
-	(7, 9, NULL, NULL, 'W'),
-	(7, 10, NULL, NULL, 'W'),
-	(7, 11, NULL, NULL, 'W'),
-	(7, 12, NULL, NULL, 'W'),
-	(7, 13, NULL, NULL, 'W'),
-	(7, 14, NULL, NULL, 'W'),
-	(7, 15, NULL, NULL, 'W'),
-	(7, 16, NULL, NULL, 'W'),
-	(7, 17, NULL, NULL, 'W'),
-	(7, 18, NULL, NULL, 'W'),
-	(7, 19, NULL, NULL, 'W'),
-	(7, 20, NULL, NULL, 'W'),
-	(8, 1, NULL, NULL, 'W'),
-	(8, 2, NULL, NULL, 'W'),
-	(8, 3, NULL, NULL, 'W'),
-	(8, 4, NULL, NULL, 'W'),
-	(8, 5, NULL, NULL, 'W'),
-	(8, 6, NULL, NULL, 'W'),
-	(8, 7, NULL, NULL, 'W'),
-	(8, 8, NULL, NULL, 'W'),
-	(8, 9, NULL, NULL, 'W'),
-	(8, 10, NULL, NULL, 'W'),
-	(8, 11, NULL, NULL, 'W'),
-	(8, 12, NULL, NULL, 'W'),
-	(8, 13, NULL, NULL, 'W'),
-	(8, 14, NULL, NULL, 'W'),
-	(8, 15, NULL, NULL, 'W'),
-	(8, 16, NULL, NULL, 'W'),
-	(8, 17, NULL, NULL, 'W'),
-	(8, 18, NULL, NULL, 'W'),
-	(8, 19, NULL, NULL, 'W'),
-	(8, 20, NULL, NULL, 'W'),
-	(9, 1, NULL, NULL, 'W'),
-	(9, 2, NULL, NULL, 'W'),
-	(9, 3, NULL, NULL, 'W'),
-	(9, 4, NULL, NULL, 'W'),
-	(9, 5, NULL, NULL, 'W'),
-	(9, 6, NULL, NULL, 'W'),
-	(9, 7, NULL, NULL, 'W'),
-	(9, 8, NULL, NULL, 'W'),
-	(9, 9, NULL, NULL, 'W'),
-	(9, 10, NULL, NULL, 'W'),
-	(9, 11, NULL, NULL, 'W'),
-	(9, 12, NULL, NULL, 'W'),
-	(9, 13, NULL, NULL, 'W'),
-	(9, 14, NULL, NULL, 'W'),
-	(9, 15, NULL, NULL, 'W'),
-	(9, 16, NULL, NULL, 'W'),
-	(9, 17, NULL, NULL, 'W'),
-	(9, 18, NULL, NULL, 'W'),
-	(9, 19, NULL, NULL, 'W'),
-	(9, 20, NULL, NULL, 'W'),
-	(10, 1, NULL, NULL, 'W'),
-	(10, 2, NULL, NULL, 'W'),
-	(10, 3, NULL, NULL, 'W'),
-	(10, 4, NULL, NULL, 'W'),
-	(10, 5, NULL, NULL, 'W'),
-	(10, 6, NULL, NULL, 'W'),
-	(10, 7, NULL, NULL, 'W'),
-	(10, 8, NULL, NULL, 'W'),
-	(10, 9, NULL, NULL, 'W'),
-	(10, 10, NULL, NULL, 'W'),
-	(10, 11, NULL, NULL, 'W'),
-	(10, 12, NULL, NULL, 'W'),
-	(10, 13, NULL, NULL, 'W'),
-	(10, 14, NULL, NULL, 'W'),
-	(10, 15, NULL, NULL, 'W'),
-	(10, 16, NULL, NULL, 'W'),
-	(10, 17, NULL, NULL, 'W'),
-	(10, 18, NULL, NULL, 'W'),
-	(10, 19, NULL, NULL, 'W'),
-	(10, 20, NULL, NULL, 'W'),
-	(11, 1, NULL, NULL, 'W'),
-	(11, 2, NULL, NULL, 'W'),
-	(11, 3, NULL, NULL, 'W'),
-	(11, 4, NULL, NULL, 'W'),
-	(11, 5, NULL, NULL, 'W'),
-	(11, 6, NULL, NULL, 'W'),
-	(11, 7, NULL, NULL, 'W'),
-	(11, 8, NULL, NULL, 'W'),
-	(11, 9, NULL, NULL, 'W'),
-	(11, 10, NULL, NULL, 'W'),
-	(11, 11, NULL, NULL, 'W'),
-	(11, 12, NULL, NULL, 'W'),
-	(11, 13, NULL, NULL, 'W'),
-	(11, 14, NULL, NULL, 'W'),
-	(11, 15, NULL, NULL, 'W'),
-	(11, 16, NULL, NULL, 'W'),
-	(11, 17, NULL, NULL, 'W'),
-	(11, 18, NULL, NULL, 'W'),
-	(11, 19, NULL, NULL, 'W'),
-	(11, 20, NULL, NULL, 'W'),
-	(12, 1, NULL, NULL, 'W'),
-	(12, 2, NULL, NULL, 'W'),
-	(12, 3, NULL, NULL, 'W'),
-	(12, 4, NULL, NULL, 'W'),
-	(12, 5, NULL, NULL, 'W'),
-	(12, 6, NULL, NULL, 'W'),
-	(12, 7, NULL, NULL, 'W'),
-	(12, 8, NULL, NULL, 'W'),
-	(12, 9, NULL, NULL, 'W'),
-	(12, 10, NULL, NULL, 'W'),
-	(12, 11, NULL, NULL, 'W'),
-	(12, 12, NULL, NULL, 'W'),
-	(12, 13, NULL, NULL, 'W'),
-	(12, 14, NULL, NULL, 'W'),
-	(12, 15, NULL, NULL, 'W'),
-	(12, 16, NULL, NULL, 'W'),
-	(12, 17, NULL, NULL, 'W'),
-	(12, 18, NULL, NULL, 'W'),
-	(12, 19, NULL, NULL, 'W'),
-	(12, 20, NULL, NULL, 'W'),
-	(13, 1, NULL, NULL, 'W'),
-	(13, 2, NULL, NULL, 'W'),
-	(13, 3, NULL, NULL, 'W'),
-	(13, 4, NULL, NULL, 'W'),
-	(13, 5, NULL, NULL, 'W'),
-	(13, 6, NULL, NULL, 'W'),
-	(13, 7, NULL, NULL, 'W'),
-	(13, 8, NULL, NULL, 'W'),
-	(13, 9, NULL, NULL, 'W'),
-	(13, 10, NULL, NULL, 'W'),
-	(13, 11, NULL, NULL, 'W'),
-	(13, 12, NULL, NULL, 'W'),
-	(13, 13, NULL, NULL, 'W'),
-	(13, 14, NULL, NULL, 'W'),
-	(13, 15, NULL, NULL, 'W'),
-	(13, 16, NULL, NULL, 'W'),
-	(13, 17, NULL, NULL, 'W'),
-	(13, 18, NULL, NULL, 'W'),
-	(13, 19, NULL, NULL, 'W'),
-	(13, 20, NULL, NULL, 'W'),
-	(14, 1, NULL, NULL, 'W'),
-	(14, 2, NULL, NULL, 'W'),
-	(14, 3, NULL, NULL, 'W'),
-	(14, 4, NULL, NULL, 'W'),
-	(14, 5, NULL, NULL, 'W'),
-	(14, 6, NULL, NULL, 'W'),
-	(14, 7, NULL, NULL, 'W'),
-	(14, 8, NULL, NULL, 'W'),
-	(14, 9, NULL, NULL, 'W'),
-	(14, 10, NULL, NULL, 'W'),
-	(14, 11, NULL, NULL, 'W'),
-	(14, 12, NULL, NULL, 'W'),
-	(14, 13, NULL, NULL, 'W'),
-	(14, 14, NULL, NULL, 'W'),
-	(14, 15, NULL, NULL, 'W'),
-	(14, 16, NULL, NULL, 'W'),
-	(14, 17, NULL, NULL, 'W'),
-	(14, 18, NULL, NULL, 'W'),
-	(14, 19, NULL, NULL, 'W'),
-	(14, 20, NULL, NULL, 'W'),
-	(15, 1, NULL, NULL, 'W'),
-	(15, 2, NULL, NULL, 'W'),
-	(15, 3, NULL, NULL, 'W'),
-	(15, 4, NULL, NULL, 'W'),
-	(15, 5, NULL, NULL, 'W'),
-	(15, 6, NULL, NULL, 'W'),
-	(15, 7, NULL, NULL, 'W'),
-	(15, 8, NULL, NULL, 'W'),
-	(15, 9, NULL, NULL, 'W'),
-	(15, 10, NULL, NULL, 'W'),
-	(15, 11, NULL, NULL, 'W'),
-	(15, 12, NULL, NULL, 'W'),
-	(15, 13, NULL, NULL, 'W'),
-	(15, 14, NULL, NULL, 'W'),
-	(15, 15, NULL, NULL, 'W'),
-	(15, 16, NULL, NULL, 'W'),
-	(15, 17, NULL, NULL, 'W'),
-	(15, 18, NULL, NULL, 'W'),
-	(15, 19, NULL, NULL, 'W'),
-	(15, 20, NULL, NULL, 'W'),
-	(16, 1, NULL, NULL, 'W'),
-	(16, 2, NULL, NULL, 'W'),
-	(16, 3, NULL, NULL, 'W'),
-	(16, 4, NULL, NULL, 'W'),
-	(16, 5, NULL, NULL, 'W'),
-	(16, 6, NULL, NULL, 'W'),
-	(16, 7, NULL, NULL, 'W'),
-	(16, 8, NULL, NULL, 'W'),
-	(16, 9, NULL, NULL, 'W'),
-	(16, 10, NULL, NULL, 'W'),
-	(16, 11, NULL, NULL, 'W'),
-	(16, 12, NULL, NULL, 'W'),
-	(16, 13, NULL, NULL, 'W'),
-	(16, 14, NULL, NULL, 'W'),
-	(16, 15, NULL, NULL, 'W'),
-	(16, 16, NULL, NULL, 'W'),
-	(16, 17, NULL, NULL, 'W'),
-	(16, 18, NULL, NULL, 'W'),
-	(16, 19, NULL, NULL, 'W'),
-	(16, 20, NULL, NULL, 'W'),
-	(17, 1, NULL, NULL, 'W'),
-	(17, 2, NULL, NULL, 'W'),
-	(17, 3, NULL, NULL, 'W'),
-	(17, 4, NULL, NULL, 'W'),
-	(17, 5, NULL, NULL, 'W'),
-	(17, 6, NULL, NULL, 'W'),
-	(17, 7, NULL, NULL, 'W'),
-	(17, 8, NULL, NULL, 'W'),
-	(17, 9, NULL, NULL, 'W'),
-	(17, 10, NULL, NULL, 'W'),
-	(17, 11, NULL, NULL, 'W'),
-	(17, 12, NULL, NULL, 'W'),
-	(17, 13, NULL, NULL, 'W'),
-	(17, 14, NULL, NULL, 'W'),
-	(17, 15, NULL, NULL, 'W'),
-	(17, 16, NULL, NULL, 'W'),
-	(17, 17, NULL, NULL, 'W'),
-	(17, 18, NULL, NULL, 'W'),
-	(17, 19, NULL, NULL, 'W'),
-	(17, 20, NULL, NULL, 'W'),
-	(18, 1, NULL, NULL, 'W'),
-	(18, 2, NULL, NULL, 'W'),
-	(18, 3, NULL, NULL, 'W'),
-	(18, 4, NULL, NULL, 'W'),
-	(18, 5, NULL, NULL, 'W'),
-	(18, 6, NULL, NULL, 'W'),
-	(18, 7, NULL, NULL, 'W'),
-	(18, 8, NULL, NULL, 'W'),
-	(18, 9, NULL, NULL, 'W'),
-	(18, 10, NULL, NULL, 'W'),
-	(18, 11, NULL, NULL, 'W'),
-	(18, 12, NULL, NULL, 'W'),
-	(18, 13, NULL, NULL, 'W'),
-	(18, 14, NULL, NULL, 'W'),
-	(18, 15, NULL, NULL, 'W'),
-	(18, 16, NULL, NULL, 'W'),
-	(18, 17, NULL, NULL, 'W'),
-	(18, 18, NULL, NULL, 'W'),
-	(18, 19, NULL, NULL, 'W'),
-	(18, 20, NULL, NULL, 'W'),
-	(19, 1, NULL, NULL, 'W'),
-	(19, 2, NULL, NULL, 'W'),
-	(19, 3, NULL, NULL, 'W'),
-	(19, 4, NULL, NULL, 'W'),
-	(19, 5, NULL, NULL, 'W'),
-	(19, 6, NULL, NULL, 'W'),
-	(19, 7, NULL, NULL, 'W'),
-	(19, 8, NULL, NULL, 'W'),
-	(19, 9, NULL, NULL, 'W'),
-	(19, 10, NULL, NULL, 'W'),
-	(19, 11, NULL, NULL, 'W'),
-	(19, 12, NULL, NULL, 'W'),
-	(19, 13, NULL, NULL, 'W'),
-	(19, 14, NULL, NULL, 'W'),
-	(19, 15, NULL, NULL, 'W'),
-	(19, 16, NULL, NULL, 'W'),
-	(19, 17, NULL, NULL, 'W'),
-	(19, 18, NULL, NULL, 'W'),
-	(19, 19, NULL, NULL, 'W'),
-	(19, 20, NULL, NULL, 'W'),
-	(20, 1, NULL, NULL, 'W'),
-	(20, 2, NULL, NULL, 'W'),
-	(20, 3, NULL, NULL, 'W'),
-	(20, 4, NULL, NULL, 'W'),
-	(20, 5, NULL, NULL, 'W'),
-	(20, 6, NULL, NULL, 'W'),
-	(20, 7, NULL, NULL, 'W'),
-	(20, 8, NULL, NULL, 'W'),
-	(20, 9, NULL, NULL, 'W'),
-	(20, 10, NULL, NULL, 'W'),
-	(20, 11, NULL, NULL, 'W'),
-	(20, 12, NULL, NULL, 'W'),
-	(20, 13, NULL, NULL, 'W'),
-	(20, 14, NULL, NULL, 'W'),
-	(20, 15, NULL, NULL, 'W'),
-	(20, 16, NULL, NULL, 'W'),
-	(20, 17, NULL, NULL, 'W'),
-	(20, 18, NULL, NULL, 'W'),
-	(20, 19, NULL, NULL, 'W'),
-	(20, 20, NULL, NULL, 'W');
+-- Dumping data for table blokus.board: ~400 rows (approximately)
+INSERT INTO `board` (`x`, `y`, `sid`, `b_color`) VALUES
+	(1, 1, 0, 'W'),
+	(1, 2, 0, 'W'),
+	(1, 3, 0, 'W'),
+	(1, 4, 0, 'W'),
+	(1, 5, 0, 'W'),
+	(1, 6, 0, 'W'),
+	(1, 7, 0, 'W'),
+	(1, 8, 0, 'W'),
+	(1, 9, 0, 'W'),
+	(1, 10, 0, 'W'),
+	(1, 11, 0, 'W'),
+	(1, 12, 0, 'W'),
+	(1, 13, 0, 'W'),
+	(1, 14, 0, 'W'),
+	(1, 15, 0, 'W'),
+	(1, 16, 0, 'W'),
+	(1, 17, 0, 'W'),
+	(1, 18, 0, 'W'),
+	(1, 19, 0, 'W'),
+	(1, 20, 0, 'W'),
+	(2, 1, 0, 'W'),
+	(2, 2, 0, 'W'),
+	(2, 3, 0, 'W'),
+	(2, 4, 0, 'W'),
+	(2, 5, 0, 'W'),
+	(2, 6, 0, 'W'),
+	(2, 7, 0, 'W'),
+	(2, 8, 0, 'W'),
+	(2, 9, 0, 'W'),
+	(2, 10, 0, 'W'),
+	(2, 11, 0, 'W'),
+	(2, 12, 0, 'W'),
+	(2, 13, 0, 'W'),
+	(2, 14, 0, 'W'),
+	(2, 15, 0, 'W'),
+	(2, 16, 0, 'W'),
+	(2, 17, 0, 'W'),
+	(2, 18, 0, 'W'),
+	(2, 19, 0, 'W'),
+	(2, 20, 0, 'W'),
+	(3, 1, 0, 'W'),
+	(3, 2, 0, 'W'),
+	(3, 3, 0, 'W'),
+	(3, 4, 0, 'W'),
+	(3, 5, 0, 'W'),
+	(3, 6, 0, 'W'),
+	(3, 7, 0, 'W'),
+	(3, 8, 0, 'W'),
+	(3, 9, 0, 'W'),
+	(3, 10, 0, 'W'),
+	(3, 11, 0, 'W'),
+	(3, 12, 0, 'W'),
+	(3, 13, 0, 'W'),
+	(3, 14, 0, 'W'),
+	(3, 15, 0, 'W'),
+	(3, 16, 0, 'W'),
+	(3, 17, 0, 'W'),
+	(3, 18, 0, 'W'),
+	(3, 19, 0, 'W'),
+	(3, 20, 0, 'W'),
+	(4, 1, 0, 'W'),
+	(4, 2, 0, 'W'),
+	(4, 3, 0, 'W'),
+	(4, 4, 0, 'W'),
+	(4, 5, 0, 'W'),
+	(4, 6, 0, 'W'),
+	(4, 7, 0, 'W'),
+	(4, 8, 0, 'W'),
+	(4, 9, 0, 'W'),
+	(4, 10, 0, 'W'),
+	(4, 11, 0, 'W'),
+	(4, 12, 0, 'W'),
+	(4, 13, 0, 'W'),
+	(4, 14, 0, 'W'),
+	(4, 15, 0, 'W'),
+	(4, 16, 0, 'W'),
+	(4, 17, 0, 'W'),
+	(4, 18, 0, 'W'),
+	(4, 19, 0, 'W'),
+	(4, 20, 0, 'W'),
+	(5, 1, 0, 'W'),
+	(5, 2, 0, 'W'),
+	(5, 3, 0, 'W'),
+	(5, 4, 0, 'W'),
+	(5, 5, 0, 'W'),
+	(5, 6, 0, 'W'),
+	(5, 7, 0, 'W'),
+	(5, 8, 0, 'W'),
+	(5, 9, 0, 'W'),
+	(5, 10, 0, 'W'),
+	(5, 11, 0, 'W'),
+	(5, 12, 0, 'W'),
+	(5, 13, 0, 'W'),
+	(5, 14, 0, 'W'),
+	(5, 15, 0, 'W'),
+	(5, 16, 0, 'W'),
+	(5, 17, 0, 'W'),
+	(5, 18, 0, 'W'),
+	(5, 19, 0, 'W'),
+	(5, 20, 0, 'W'),
+	(6, 1, 0, 'W'),
+	(6, 2, 0, 'W'),
+	(6, 3, 0, 'W'),
+	(6, 4, 0, 'W'),
+	(6, 5, 0, 'W'),
+	(6, 6, 0, 'W'),
+	(6, 7, 0, 'W'),
+	(6, 8, 0, 'W'),
+	(6, 9, 0, 'W'),
+	(6, 10, 0, 'W'),
+	(6, 11, 0, 'W'),
+	(6, 12, 0, 'W'),
+	(6, 13, 0, 'W'),
+	(6, 14, 0, 'W'),
+	(6, 15, 0, 'W'),
+	(6, 16, 0, 'W'),
+	(6, 17, 0, 'W'),
+	(6, 18, 0, 'W'),
+	(6, 19, 0, 'W'),
+	(6, 20, 0, 'W'),
+	(7, 1, 0, 'W'),
+	(7, 2, 0, 'W'),
+	(7, 3, 0, 'W'),
+	(7, 4, 0, 'W'),
+	(7, 5, 0, 'W'),
+	(7, 6, 0, 'W'),
+	(7, 7, 0, 'W'),
+	(7, 8, 0, 'W'),
+	(7, 9, 0, 'W'),
+	(7, 10, 0, 'W'),
+	(7, 11, 0, 'W'),
+	(7, 12, 0, 'W'),
+	(7, 13, 0, 'W'),
+	(7, 14, 0, 'W'),
+	(7, 15, 0, 'W'),
+	(7, 16, 0, 'W'),
+	(7, 17, 0, 'W'),
+	(7, 18, 0, 'W'),
+	(7, 19, 0, 'W'),
+	(7, 20, 0, 'W'),
+	(8, 1, 0, 'W'),
+	(8, 2, 0, 'W'),
+	(8, 3, 0, 'W'),
+	(8, 4, 0, 'W'),
+	(8, 5, 0, 'W'),
+	(8, 6, 0, 'W'),
+	(8, 7, 0, 'W'),
+	(8, 8, 0, 'W'),
+	(8, 9, 0, 'W'),
+	(8, 10, 0, 'W'),
+	(8, 11, 0, 'W'),
+	(8, 12, 0, 'W'),
+	(8, 13, 0, 'W'),
+	(8, 14, 0, 'W'),
+	(8, 15, 0, 'W'),
+	(8, 16, 0, 'W'),
+	(8, 17, 0, 'W'),
+	(8, 18, 0, 'W'),
+	(8, 19, 0, 'W'),
+	(8, 20, 0, 'W'),
+	(9, 1, 0, 'W'),
+	(9, 2, 0, 'W'),
+	(9, 3, 0, 'W'),
+	(9, 4, 0, 'W'),
+	(9, 5, 0, 'W'),
+	(9, 6, 0, 'W'),
+	(9, 7, 0, 'W'),
+	(9, 8, 0, 'W'),
+	(9, 9, 0, 'W'),
+	(9, 10, 0, 'W'),
+	(9, 11, 0, 'W'),
+	(9, 12, 0, 'W'),
+	(9, 13, 0, 'W'),
+	(9, 14, 0, 'W'),
+	(9, 15, 0, 'W'),
+	(9, 16, 0, 'W'),
+	(9, 17, 0, 'W'),
+	(9, 18, 0, 'W'),
+	(9, 19, 0, 'W'),
+	(9, 20, 0, 'W'),
+	(10, 1, 0, 'W'),
+	(10, 2, 0, 'W'),
+	(10, 3, 0, 'W'),
+	(10, 4, 0, 'W'),
+	(10, 5, 0, 'W'),
+	(10, 6, 0, 'W'),
+	(10, 7, 0, 'W'),
+	(10, 8, 0, 'W'),
+	(10, 9, 0, 'W'),
+	(10, 10, 0, 'W'),
+	(10, 11, 0, 'W'),
+	(10, 12, 0, 'W'),
+	(10, 13, 0, 'W'),
+	(10, 14, 0, 'W'),
+	(10, 15, 0, 'W'),
+	(10, 16, 0, 'W'),
+	(10, 17, 0, 'W'),
+	(10, 18, 0, 'W'),
+	(10, 19, 0, 'W'),
+	(10, 20, 0, 'W'),
+	(11, 1, 0, 'W'),
+	(11, 2, 0, 'W'),
+	(11, 3, 0, 'W'),
+	(11, 4, 0, 'W'),
+	(11, 5, 0, 'W'),
+	(11, 6, 0, 'W'),
+	(11, 7, 0, 'W'),
+	(11, 8, 0, 'W'),
+	(11, 9, 0, 'W'),
+	(11, 10, 0, 'W'),
+	(11, 11, 0, 'W'),
+	(11, 12, 0, 'W'),
+	(11, 13, 0, 'W'),
+	(11, 14, 0, 'W'),
+	(11, 15, 0, 'W'),
+	(11, 16, 0, 'W'),
+	(11, 17, 0, 'W'),
+	(11, 18, 0, 'W'),
+	(11, 19, 0, 'W'),
+	(11, 20, 0, 'W'),
+	(12, 1, 0, 'W'),
+	(12, 2, 0, 'W'),
+	(12, 3, 0, 'W'),
+	(12, 4, 0, 'W'),
+	(12, 5, 0, 'W'),
+	(12, 6, 0, 'W'),
+	(12, 7, 0, 'W'),
+	(12, 8, 0, 'W'),
+	(12, 9, 0, 'W'),
+	(12, 10, 0, 'W'),
+	(12, 11, 0, 'W'),
+	(12, 12, 0, 'W'),
+	(12, 13, 0, 'W'),
+	(12, 14, 0, 'W'),
+	(12, 15, 0, 'W'),
+	(12, 16, 0, 'W'),
+	(12, 17, 0, 'W'),
+	(12, 18, 0, 'W'),
+	(12, 19, 0, 'W'),
+	(12, 20, 0, 'W'),
+	(13, 1, 0, 'W'),
+	(13, 2, 0, 'W'),
+	(13, 3, 0, 'W'),
+	(13, 4, 0, 'W'),
+	(13, 5, 0, 'W'),
+	(13, 6, 0, 'W'),
+	(13, 7, 0, 'W'),
+	(13, 8, 0, 'W'),
+	(13, 9, 0, 'W'),
+	(13, 10, 0, 'W'),
+	(13, 11, 0, 'W'),
+	(13, 12, 0, 'W'),
+	(13, 13, 0, 'W'),
+	(13, 14, 0, 'W'),
+	(13, 15, 0, 'W'),
+	(13, 16, 0, 'W'),
+	(13, 17, 0, 'W'),
+	(13, 18, 0, 'W'),
+	(13, 19, 0, 'W'),
+	(13, 20, 0, 'W'),
+	(14, 1, 0, 'W'),
+	(14, 2, 0, 'W'),
+	(14, 3, 0, 'W'),
+	(14, 4, 0, 'W'),
+	(14, 5, 0, 'W'),
+	(14, 6, 0, 'W'),
+	(14, 7, 0, 'W'),
+	(14, 8, 0, 'W'),
+	(14, 9, 0, 'W'),
+	(14, 10, 0, 'W'),
+	(14, 11, 0, 'W'),
+	(14, 12, 0, 'W'),
+	(14, 13, 0, 'W'),
+	(14, 14, 0, 'W'),
+	(14, 15, 0, 'W'),
+	(14, 16, 0, 'W'),
+	(14, 17, 0, 'W'),
+	(14, 18, 0, 'W'),
+	(14, 19, 0, 'W'),
+	(14, 20, 0, 'W'),
+	(15, 1, 0, 'W'),
+	(15, 2, 0, 'W'),
+	(15, 3, 0, 'W'),
+	(15, 4, 0, 'W'),
+	(15, 5, 0, 'W'),
+	(15, 6, 0, 'W'),
+	(15, 7, 0, 'W'),
+	(15, 8, 0, 'W'),
+	(15, 9, 0, 'W'),
+	(15, 10, 0, 'W'),
+	(15, 11, 0, 'W'),
+	(15, 12, 0, 'W'),
+	(15, 13, 0, 'W'),
+	(15, 14, 0, 'W'),
+	(15, 15, 0, 'W'),
+	(15, 16, 0, 'W'),
+	(15, 17, 0, 'W'),
+	(15, 18, 0, 'W'),
+	(15, 19, 0, 'W'),
+	(15, 20, 0, 'W'),
+	(16, 1, 0, 'W'),
+	(16, 2, 0, 'W'),
+	(16, 3, 0, 'W'),
+	(16, 4, 0, 'W'),
+	(16, 5, 0, 'W'),
+	(16, 6, 0, 'W'),
+	(16, 7, 0, 'W'),
+	(16, 8, 0, 'W'),
+	(16, 9, 0, 'W'),
+	(16, 10, 0, 'W'),
+	(16, 11, 0, 'W'),
+	(16, 12, 0, 'W'),
+	(16, 13, 0, 'W'),
+	(16, 14, 0, 'W'),
+	(16, 15, 0, 'W'),
+	(16, 16, 0, 'W'),
+	(16, 17, 0, 'W'),
+	(16, 18, 0, 'W'),
+	(16, 19, 0, 'W'),
+	(16, 20, 0, 'W'),
+	(17, 1, 0, 'W'),
+	(17, 2, 0, 'W'),
+	(17, 3, 0, 'W'),
+	(17, 4, 0, 'W'),
+	(17, 5, 0, 'W'),
+	(17, 6, 0, 'W'),
+	(17, 7, 0, 'W'),
+	(17, 8, 0, 'W'),
+	(17, 9, 0, 'W'),
+	(17, 10, 0, 'W'),
+	(17, 11, 0, 'W'),
+	(17, 12, 0, 'W'),
+	(17, 13, 0, 'W'),
+	(17, 14, 0, 'W'),
+	(17, 15, 0, 'W'),
+	(17, 16, 0, 'W'),
+	(17, 17, 0, 'W'),
+	(17, 18, 0, 'W'),
+	(17, 19, 0, 'W'),
+	(17, 20, 0, 'W'),
+	(18, 1, 0, 'W'),
+	(18, 2, 0, 'W'),
+	(18, 3, 0, 'W'),
+	(18, 4, 0, 'W'),
+	(18, 5, 0, 'W'),
+	(18, 6, 0, 'W'),
+	(18, 7, 0, 'W'),
+	(18, 8, 0, 'W'),
+	(18, 9, 0, 'W'),
+	(18, 10, 0, 'W'),
+	(18, 11, 0, 'W'),
+	(18, 12, 0, 'W'),
+	(18, 13, 0, 'W'),
+	(18, 14, 0, 'W'),
+	(18, 15, 0, 'W'),
+	(18, 16, 0, 'W'),
+	(18, 17, 0, 'W'),
+	(18, 18, 0, 'W'),
+	(18, 19, 0, 'W'),
+	(18, 20, 0, 'W'),
+	(19, 1, 0, 'W'),
+	(19, 2, 0, 'W'),
+	(19, 3, 0, 'W'),
+	(19, 4, 0, 'W'),
+	(19, 5, 0, 'W'),
+	(19, 6, 0, 'W'),
+	(19, 7, 0, 'W'),
+	(19, 8, 0, 'W'),
+	(19, 9, 0, 'W'),
+	(19, 10, 0, 'W'),
+	(19, 11, 0, 'W'),
+	(19, 12, 0, 'W'),
+	(19, 13, 0, 'W'),
+	(19, 14, 0, 'W'),
+	(19, 15, 0, 'W'),
+	(19, 16, 0, 'W'),
+	(19, 17, 0, 'W'),
+	(19, 18, 0, 'W'),
+	(19, 19, 0, 'W'),
+	(19, 20, 0, 'W'),
+	(20, 1, 0, 'W'),
+	(20, 2, 0, 'W'),
+	(20, 3, 0, 'W'),
+	(20, 4, 0, 'W'),
+	(20, 5, 0, 'W'),
+	(20, 6, 0, 'W'),
+	(20, 7, 0, 'W'),
+	(20, 8, 0, 'W'),
+	(20, 9, 0, 'W'),
+	(20, 10, 0, 'W'),
+	(20, 11, 0, 'W'),
+	(20, 12, 0, 'W'),
+	(20, 13, 0, 'W'),
+	(20, 14, 0, 'W'),
+	(20, 15, 0, 'W'),
+	(20, 16, 0, 'W'),
+	(20, 17, 0, 'W'),
+	(20, 18, 0, 'W'),
+	(20, 19, 0, 'W'),
+	(20, 20, 0, 'W');
 
--- Dumping structure for πίνακας mysql.board_empty
+-- Dumping structure for πίνακας blokus.board_empty
 CREATE TABLE IF NOT EXISTS `board_empty` (
   `x` int(11) NOT NULL,
   `y` int(11) NOT NULL,
-  `pieces_color` enum('R','G','B','Y') DEFAULT NULL,
-  `pieces` enum('F','I','N','P','T','U','V','W','X','Y','Z','IM','LM','ZM','SQ','TM','LN','I3','I2','I1') DEFAULT NULL,
+  `sid` int(2) NOT NULL,
   `b_color` enum('R','W','G','B','Y') DEFAULT 'W',
-  PRIMARY KEY (`x`,`y`) USING BTREE
+  PRIMARY KEY (`x`,`y`,`sid`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
--- Dumping data for table mysql.board_empty: ~400 rows (approximately)
-INSERT INTO `board_empty` (`x`, `y`, `pieces_color`, `pieces`, `b_color`) VALUES
-	(1, 1, NULL, NULL, 'W'),
-	(1, 2, NULL, NULL, 'W'),
-	(1, 3, NULL, NULL, 'W'),
-	(1, 4, NULL, NULL, 'W'),
-	(1, 5, NULL, NULL, 'W'),
-	(1, 6, NULL, NULL, 'W'),
-	(1, 7, NULL, NULL, 'W'),
-	(1, 8, NULL, NULL, 'W'),
-	(1, 9, NULL, NULL, 'W'),
-	(1, 10, NULL, NULL, 'W'),
-	(1, 11, NULL, NULL, 'W'),
-	(1, 12, NULL, NULL, 'W'),
-	(1, 13, NULL, NULL, 'W'),
-	(1, 14, NULL, NULL, 'W'),
-	(1, 15, NULL, NULL, 'W'),
-	(1, 16, NULL, NULL, 'W'),
-	(1, 17, NULL, NULL, 'W'),
-	(1, 18, NULL, NULL, 'W'),
-	(1, 19, NULL, NULL, 'W'),
-	(1, 20, NULL, NULL, 'W'),
-	(2, 1, NULL, NULL, 'W'),
-	(2, 2, NULL, NULL, 'W'),
-	(2, 3, NULL, NULL, 'W'),
-	(2, 4, NULL, NULL, 'W'),
-	(2, 5, NULL, NULL, 'W'),
-	(2, 6, NULL, NULL, 'W'),
-	(2, 7, NULL, NULL, 'W'),
-	(2, 8, NULL, NULL, 'W'),
-	(2, 9, NULL, NULL, 'W'),
-	(2, 10, NULL, NULL, 'W'),
-	(2, 11, NULL, NULL, 'W'),
-	(2, 12, NULL, NULL, 'W'),
-	(2, 13, NULL, NULL, 'W'),
-	(2, 14, NULL, NULL, 'W'),
-	(2, 15, NULL, NULL, 'W'),
-	(2, 16, NULL, NULL, 'W'),
-	(2, 17, NULL, NULL, 'W'),
-	(2, 18, NULL, NULL, 'W'),
-	(2, 19, NULL, NULL, 'W'),
-	(2, 20, NULL, NULL, 'W'),
-	(3, 1, NULL, NULL, 'W'),
-	(3, 2, NULL, NULL, 'W'),
-	(3, 3, NULL, NULL, 'W'),
-	(3, 4, NULL, NULL, 'W'),
-	(3, 5, NULL, NULL, 'W'),
-	(3, 6, NULL, NULL, 'W'),
-	(3, 7, NULL, NULL, 'W'),
-	(3, 8, NULL, NULL, 'W'),
-	(3, 9, NULL, NULL, 'W'),
-	(3, 10, NULL, NULL, 'W'),
-	(3, 11, NULL, NULL, 'W'),
-	(3, 12, NULL, NULL, 'W'),
-	(3, 13, NULL, NULL, 'W'),
-	(3, 14, NULL, NULL, 'W'),
-	(3, 15, NULL, NULL, 'W'),
-	(3, 16, NULL, NULL, 'W'),
-	(3, 17, NULL, NULL, 'W'),
-	(3, 18, NULL, NULL, 'W'),
-	(3, 19, NULL, NULL, 'W'),
-	(3, 20, NULL, NULL, 'W'),
-	(4, 1, NULL, NULL, 'W'),
-	(4, 2, NULL, NULL, 'W'),
-	(4, 3, NULL, NULL, 'W'),
-	(4, 4, NULL, NULL, 'W'),
-	(4, 5, NULL, NULL, 'W'),
-	(4, 6, NULL, NULL, 'W'),
-	(4, 7, NULL, NULL, 'W'),
-	(4, 8, NULL, NULL, 'W'),
-	(4, 9, NULL, NULL, 'W'),
-	(4, 10, NULL, NULL, 'W'),
-	(4, 11, NULL, NULL, 'W'),
-	(4, 12, NULL, NULL, 'W'),
-	(4, 13, NULL, NULL, 'W'),
-	(4, 14, NULL, NULL, 'W'),
-	(4, 15, NULL, NULL, 'W'),
-	(4, 16, NULL, NULL, 'W'),
-	(4, 17, NULL, NULL, 'W'),
-	(4, 18, NULL, NULL, 'W'),
-	(4, 19, NULL, NULL, 'W'),
-	(4, 20, NULL, NULL, 'W'),
-	(5, 1, NULL, NULL, 'W'),
-	(5, 2, NULL, NULL, 'W'),
-	(5, 3, NULL, NULL, 'W'),
-	(5, 4, NULL, NULL, 'W'),
-	(5, 5, NULL, NULL, 'W'),
-	(5, 6, NULL, NULL, 'W'),
-	(5, 7, NULL, NULL, 'W'),
-	(5, 8, NULL, NULL, 'W'),
-	(5, 9, NULL, NULL, 'W'),
-	(5, 10, NULL, NULL, 'W'),
-	(5, 11, NULL, NULL, 'W'),
-	(5, 12, NULL, NULL, 'W'),
-	(5, 13, NULL, NULL, 'W'),
-	(5, 14, NULL, NULL, 'W'),
-	(5, 15, NULL, NULL, 'W'),
-	(5, 16, NULL, NULL, 'W'),
-	(5, 17, NULL, NULL, 'W'),
-	(5, 18, NULL, NULL, 'W'),
-	(5, 19, NULL, NULL, 'W'),
-	(5, 20, NULL, NULL, 'W'),
-	(6, 1, NULL, NULL, 'W'),
-	(6, 2, NULL, NULL, 'W'),
-	(6, 3, NULL, NULL, 'W'),
-	(6, 4, NULL, NULL, 'W'),
-	(6, 5, NULL, NULL, 'W'),
-	(6, 6, NULL, NULL, 'W'),
-	(6, 7, NULL, NULL, 'W'),
-	(6, 8, NULL, NULL, 'W'),
-	(6, 9, NULL, NULL, 'W'),
-	(6, 10, NULL, NULL, 'W'),
-	(6, 11, NULL, NULL, 'W'),
-	(6, 12, NULL, NULL, 'W'),
-	(6, 13, NULL, NULL, 'W'),
-	(6, 14, NULL, NULL, 'W'),
-	(6, 15, NULL, NULL, 'W'),
-	(6, 16, NULL, NULL, 'W'),
-	(6, 17, NULL, NULL, 'W'),
-	(6, 18, NULL, NULL, 'W'),
-	(6, 19, NULL, NULL, 'W'),
-	(6, 20, NULL, NULL, 'W'),
-	(7, 1, NULL, NULL, 'W'),
-	(7, 2, NULL, NULL, 'W'),
-	(7, 3, NULL, NULL, 'W'),
-	(7, 4, NULL, NULL, 'W'),
-	(7, 5, NULL, NULL, 'W'),
-	(7, 6, NULL, NULL, 'W'),
-	(7, 7, NULL, NULL, 'W'),
-	(7, 8, NULL, NULL, 'W'),
-	(7, 9, NULL, NULL, 'W'),
-	(7, 10, NULL, NULL, 'W'),
-	(7, 11, NULL, NULL, 'W'),
-	(7, 12, NULL, NULL, 'W'),
-	(7, 13, NULL, NULL, 'W'),
-	(7, 14, NULL, NULL, 'W'),
-	(7, 15, NULL, NULL, 'W'),
-	(7, 16, NULL, NULL, 'W'),
-	(7, 17, NULL, NULL, 'W'),
-	(7, 18, NULL, NULL, 'W'),
-	(7, 19, NULL, NULL, 'W'),
-	(7, 20, NULL, NULL, 'W'),
-	(8, 1, NULL, NULL, 'W'),
-	(8, 2, NULL, NULL, 'W'),
-	(8, 3, NULL, NULL, 'W'),
-	(8, 4, NULL, NULL, 'W'),
-	(8, 5, NULL, NULL, 'W'),
-	(8, 6, NULL, NULL, 'W'),
-	(8, 7, NULL, NULL, 'W'),
-	(8, 8, NULL, NULL, 'W'),
-	(8, 9, NULL, NULL, 'W'),
-	(8, 10, NULL, NULL, 'W'),
-	(8, 11, NULL, NULL, 'W'),
-	(8, 12, NULL, NULL, 'W'),
-	(8, 13, NULL, NULL, 'W'),
-	(8, 14, NULL, NULL, 'W'),
-	(8, 15, NULL, NULL, 'W'),
-	(8, 16, NULL, NULL, 'W'),
-	(8, 17, NULL, NULL, 'W'),
-	(8, 18, NULL, NULL, 'W'),
-	(8, 19, NULL, NULL, 'W'),
-	(8, 20, NULL, NULL, 'W'),
-	(9, 1, NULL, NULL, 'W'),
-	(9, 2, NULL, NULL, 'W'),
-	(9, 3, NULL, NULL, 'W'),
-	(9, 4, NULL, NULL, 'W'),
-	(9, 5, NULL, NULL, 'W'),
-	(9, 6, NULL, NULL, 'W'),
-	(9, 7, NULL, NULL, 'W'),
-	(9, 8, NULL, NULL, 'W'),
-	(9, 9, NULL, NULL, 'W'),
-	(9, 10, NULL, NULL, 'W'),
-	(9, 11, NULL, NULL, 'W'),
-	(9, 12, NULL, NULL, 'W'),
-	(9, 13, NULL, NULL, 'W'),
-	(9, 14, NULL, NULL, 'W'),
-	(9, 15, NULL, NULL, 'W'),
-	(9, 16, NULL, NULL, 'W'),
-	(9, 17, NULL, NULL, 'W'),
-	(9, 18, NULL, NULL, 'W'),
-	(9, 19, NULL, NULL, 'W'),
-	(9, 20, NULL, NULL, 'W'),
-	(10, 1, NULL, NULL, 'W'),
-	(10, 2, NULL, NULL, 'W'),
-	(10, 3, NULL, NULL, 'W'),
-	(10, 4, NULL, NULL, 'W'),
-	(10, 5, NULL, NULL, 'W'),
-	(10, 6, NULL, NULL, 'W'),
-	(10, 7, NULL, NULL, 'W'),
-	(10, 8, NULL, NULL, 'W'),
-	(10, 9, NULL, NULL, 'W'),
-	(10, 10, NULL, NULL, 'W'),
-	(10, 11, NULL, NULL, 'W'),
-	(10, 12, NULL, NULL, 'W'),
-	(10, 13, NULL, NULL, 'W'),
-	(10, 14, NULL, NULL, 'W'),
-	(10, 15, NULL, NULL, 'W'),
-	(10, 16, NULL, NULL, 'W'),
-	(10, 17, NULL, NULL, 'W'),
-	(10, 18, NULL, NULL, 'W'),
-	(10, 19, NULL, NULL, 'W'),
-	(10, 20, NULL, NULL, 'W'),
-	(11, 1, NULL, NULL, 'W'),
-	(11, 2, NULL, NULL, 'W'),
-	(11, 3, NULL, NULL, 'W'),
-	(11, 4, NULL, NULL, 'W'),
-	(11, 5, NULL, NULL, 'W'),
-	(11, 6, NULL, NULL, 'W'),
-	(11, 7, NULL, NULL, 'W'),
-	(11, 8, NULL, NULL, 'W'),
-	(11, 9, NULL, NULL, 'W'),
-	(11, 10, NULL, NULL, 'W'),
-	(11, 11, NULL, NULL, 'W'),
-	(11, 12, NULL, NULL, 'W'),
-	(11, 13, NULL, NULL, 'W'),
-	(11, 14, NULL, NULL, 'W'),
-	(11, 15, NULL, NULL, 'W'),
-	(11, 16, NULL, NULL, 'W'),
-	(11, 17, NULL, NULL, 'W'),
-	(11, 18, NULL, NULL, 'W'),
-	(11, 19, NULL, NULL, 'W'),
-	(11, 20, NULL, NULL, 'W'),
-	(12, 1, NULL, NULL, 'W'),
-	(12, 2, NULL, NULL, 'W'),
-	(12, 3, NULL, NULL, 'W'),
-	(12, 4, NULL, NULL, 'W'),
-	(12, 5, NULL, NULL, 'W'),
-	(12, 6, NULL, NULL, 'W'),
-	(12, 7, NULL, NULL, 'W'),
-	(12, 8, NULL, NULL, 'W'),
-	(12, 9, NULL, NULL, 'W'),
-	(12, 10, NULL, NULL, 'W'),
-	(12, 11, NULL, NULL, 'W'),
-	(12, 12, NULL, NULL, 'W'),
-	(12, 13, NULL, NULL, 'W'),
-	(12, 14, NULL, NULL, 'W'),
-	(12, 15, NULL, NULL, 'W'),
-	(12, 16, NULL, NULL, 'W'),
-	(12, 17, NULL, NULL, 'W'),
-	(12, 18, NULL, NULL, 'W'),
-	(12, 19, NULL, NULL, 'W'),
-	(12, 20, NULL, NULL, 'W'),
-	(13, 1, NULL, NULL, 'W'),
-	(13, 2, NULL, NULL, 'W'),
-	(13, 3, NULL, NULL, 'W'),
-	(13, 4, NULL, NULL, 'W'),
-	(13, 5, NULL, NULL, 'W'),
-	(13, 6, NULL, NULL, 'W'),
-	(13, 7, NULL, NULL, 'W'),
-	(13, 8, NULL, NULL, 'W'),
-	(13, 9, NULL, NULL, 'W'),
-	(13, 10, NULL, NULL, 'W'),
-	(13, 11, NULL, NULL, 'W'),
-	(13, 12, NULL, NULL, 'W'),
-	(13, 13, NULL, NULL, 'W'),
-	(13, 14, NULL, NULL, 'W'),
-	(13, 15, NULL, NULL, 'W'),
-	(13, 16, NULL, NULL, 'W'),
-	(13, 17, NULL, NULL, 'W'),
-	(13, 18, NULL, NULL, 'W'),
-	(13, 19, NULL, NULL, 'W'),
-	(13, 20, NULL, NULL, 'W'),
-	(14, 1, NULL, NULL, 'W'),
-	(14, 2, NULL, NULL, 'W'),
-	(14, 3, NULL, NULL, 'W'),
-	(14, 4, NULL, NULL, 'W'),
-	(14, 5, NULL, NULL, 'W'),
-	(14, 6, NULL, NULL, 'W'),
-	(14, 7, NULL, NULL, 'W'),
-	(14, 8, NULL, NULL, 'W'),
-	(14, 9, NULL, NULL, 'W'),
-	(14, 10, NULL, NULL, 'W'),
-	(14, 11, NULL, NULL, 'W'),
-	(14, 12, NULL, NULL, 'W'),
-	(14, 13, NULL, NULL, 'W'),
-	(14, 14, NULL, NULL, 'W'),
-	(14, 15, NULL, NULL, 'W'),
-	(14, 16, NULL, NULL, 'W'),
-	(14, 17, NULL, NULL, 'W'),
-	(14, 18, NULL, NULL, 'W'),
-	(14, 19, NULL, NULL, 'W'),
-	(14, 20, NULL, NULL, 'W'),
-	(15, 1, NULL, NULL, 'W'),
-	(15, 2, NULL, NULL, 'W'),
-	(15, 3, NULL, NULL, 'W'),
-	(15, 4, NULL, NULL, 'W'),
-	(15, 5, NULL, NULL, 'W'),
-	(15, 6, NULL, NULL, 'W'),
-	(15, 7, NULL, NULL, 'W'),
-	(15, 8, NULL, NULL, 'W'),
-	(15, 9, NULL, NULL, 'W'),
-	(15, 10, NULL, NULL, 'W'),
-	(15, 11, NULL, NULL, 'W'),
-	(15, 12, NULL, NULL, 'W'),
-	(15, 13, NULL, NULL, 'W'),
-	(15, 14, NULL, NULL, 'W'),
-	(15, 15, NULL, NULL, 'W'),
-	(15, 16, NULL, NULL, 'W'),
-	(15, 17, NULL, NULL, 'W'),
-	(15, 18, NULL, NULL, 'W'),
-	(15, 19, NULL, NULL, 'W'),
-	(15, 20, NULL, NULL, 'W'),
-	(16, 1, NULL, NULL, 'W'),
-	(16, 2, NULL, NULL, 'W'),
-	(16, 3, NULL, NULL, 'W'),
-	(16, 4, NULL, NULL, 'W'),
-	(16, 5, NULL, NULL, 'W'),
-	(16, 6, NULL, NULL, 'W'),
-	(16, 7, NULL, NULL, 'W'),
-	(16, 8, NULL, NULL, 'W'),
-	(16, 9, NULL, NULL, 'W'),
-	(16, 10, NULL, NULL, 'W'),
-	(16, 11, NULL, NULL, 'W'),
-	(16, 12, NULL, NULL, 'W'),
-	(16, 13, NULL, NULL, 'W'),
-	(16, 14, NULL, NULL, 'W'),
-	(16, 15, NULL, NULL, 'W'),
-	(16, 16, NULL, NULL, 'W'),
-	(16, 17, NULL, NULL, 'W'),
-	(16, 18, NULL, NULL, 'W'),
-	(16, 19, NULL, NULL, 'W'),
-	(16, 20, NULL, NULL, 'W'),
-	(17, 1, NULL, NULL, 'W'),
-	(17, 2, NULL, NULL, 'W'),
-	(17, 3, NULL, NULL, 'W'),
-	(17, 4, NULL, NULL, 'W'),
-	(17, 5, NULL, NULL, 'W'),
-	(17, 6, NULL, NULL, 'W'),
-	(17, 7, NULL, NULL, 'W'),
-	(17, 8, NULL, NULL, 'W'),
-	(17, 9, NULL, NULL, 'W'),
-	(17, 10, NULL, NULL, 'W'),
-	(17, 11, NULL, NULL, 'W'),
-	(17, 12, NULL, NULL, 'W'),
-	(17, 13, NULL, NULL, 'W'),
-	(17, 14, NULL, NULL, 'W'),
-	(17, 15, NULL, NULL, 'W'),
-	(17, 16, NULL, NULL, 'W'),
-	(17, 17, NULL, NULL, 'W'),
-	(17, 18, NULL, NULL, 'W'),
-	(17, 19, NULL, NULL, 'W'),
-	(17, 20, NULL, NULL, 'W'),
-	(18, 1, NULL, NULL, 'W'),
-	(18, 2, NULL, NULL, 'W'),
-	(18, 3, NULL, NULL, 'W'),
-	(18, 4, NULL, NULL, 'W'),
-	(18, 5, NULL, NULL, 'W'),
-	(18, 6, NULL, NULL, 'W'),
-	(18, 7, NULL, NULL, 'W'),
-	(18, 8, NULL, NULL, 'W'),
-	(18, 9, NULL, NULL, 'W'),
-	(18, 10, NULL, NULL, 'W'),
-	(18, 11, NULL, NULL, 'W'),
-	(18, 12, NULL, NULL, 'W'),
-	(18, 13, NULL, NULL, 'W'),
-	(18, 14, NULL, NULL, 'W'),
-	(18, 15, NULL, NULL, 'W'),
-	(18, 16, NULL, NULL, 'W'),
-	(18, 17, NULL, NULL, 'W'),
-	(18, 18, NULL, NULL, 'W'),
-	(18, 19, NULL, NULL, 'W'),
-	(18, 20, NULL, NULL, 'W'),
-	(19, 1, NULL, NULL, 'W'),
-	(19, 2, NULL, NULL, 'W'),
-	(19, 3, NULL, NULL, 'W'),
-	(19, 4, NULL, NULL, 'W'),
-	(19, 5, NULL, NULL, 'W'),
-	(19, 6, NULL, NULL, 'W'),
-	(19, 7, NULL, NULL, 'W'),
-	(19, 8, NULL, NULL, 'W'),
-	(19, 9, NULL, NULL, 'W'),
-	(19, 10, NULL, NULL, 'W'),
-	(19, 11, NULL, NULL, 'W'),
-	(19, 12, NULL, NULL, 'W'),
-	(19, 13, NULL, NULL, 'W'),
-	(19, 14, NULL, NULL, 'W'),
-	(19, 15, NULL, NULL, 'W'),
-	(19, 16, NULL, NULL, 'W'),
-	(19, 17, NULL, NULL, 'W'),
-	(19, 18, NULL, NULL, 'W'),
-	(19, 19, NULL, NULL, 'W'),
-	(19, 20, NULL, NULL, 'W'),
-	(20, 1, NULL, NULL, 'W'),
-	(20, 2, NULL, NULL, 'W'),
-	(20, 3, NULL, NULL, 'W'),
-	(20, 4, NULL, NULL, 'W'),
-	(20, 5, NULL, NULL, 'W'),
-	(20, 6, NULL, NULL, 'W'),
-	(20, 7, NULL, NULL, 'W'),
-	(20, 8, NULL, NULL, 'W'),
-	(20, 9, NULL, NULL, 'W'),
-	(20, 10, NULL, NULL, 'W'),
-	(20, 11, NULL, NULL, 'W'),
-	(20, 12, NULL, NULL, 'W'),
-	(20, 13, NULL, NULL, 'W'),
-	(20, 14, NULL, NULL, 'W'),
-	(20, 15, NULL, NULL, 'W'),
-	(20, 16, NULL, NULL, 'W'),
-	(20, 17, NULL, NULL, 'W'),
-	(20, 18, NULL, NULL, 'W'),
-	(20, 19, NULL, NULL, 'W'),
-	(20, 20, NULL, NULL, 'W');
+-- Dumping data for table blokus.board_empty: ~400 rows (approximately)
+INSERT INTO `board_empty` (`x`, `y`, `sid`, `b_color`) VALUES
+	(1, 1, 0, 'W'),
+	(1, 2, 0, 'W'),
+	(1, 3, 0, 'W'),
+	(1, 4, 0, 'W'),
+	(1, 5, 0, 'W'),
+	(1, 6, 0, 'W'),
+	(1, 7, 0, 'W'),
+	(1, 8, 0, 'W'),
+	(1, 9, 0, 'W'),
+	(1, 10, 0, 'W'),
+	(1, 11, 0, 'W'),
+	(1, 12, 0, 'W'),
+	(1, 13, 0, 'W'),
+	(1, 14, 0, 'W'),
+	(1, 15, 0, 'W'),
+	(1, 16, 0, 'W'),
+	(1, 17, 0, 'W'),
+	(1, 18, 0, 'W'),
+	(1, 19, 0, 'W'),
+	(1, 20, 0, 'W'),
+	(2, 1, 0, 'W'),
+	(2, 2, 0, 'W'),
+	(2, 3, 0, 'W'),
+	(2, 4, 0, 'W'),
+	(2, 5, 0, 'W'),
+	(2, 6, 0, 'W'),
+	(2, 7, 0, 'W'),
+	(2, 8, 0, 'W'),
+	(2, 9, 0, 'W'),
+	(2, 10, 0, 'W'),
+	(2, 11, 0, 'W'),
+	(2, 12, 0, 'W'),
+	(2, 13, 0, 'W'),
+	(2, 14, 0, 'W'),
+	(2, 15, 0, 'W'),
+	(2, 16, 0, 'W'),
+	(2, 17, 0, 'W'),
+	(2, 18, 0, 'W'),
+	(2, 19, 0, 'W'),
+	(2, 20, 0, 'W'),
+	(3, 1, 0, 'W'),
+	(3, 2, 0, 'W'),
+	(3, 3, 0, 'W'),
+	(3, 4, 0, 'W'),
+	(3, 5, 0, 'W'),
+	(3, 6, 0, 'W'),
+	(3, 7, 0, 'W'),
+	(3, 8, 0, 'W'),
+	(3, 9, 0, 'W'),
+	(3, 10, 0, 'W'),
+	(3, 11, 0, 'W'),
+	(3, 12, 0, 'W'),
+	(3, 13, 0, 'W'),
+	(3, 14, 0, 'W'),
+	(3, 15, 0, 'W'),
+	(3, 16, 0, 'W'),
+	(3, 17, 0, 'W'),
+	(3, 18, 0, 'W'),
+	(3, 19, 0, 'W'),
+	(3, 20, 0, 'W'),
+	(4, 1, 0, 'W'),
+	(4, 2, 0, 'W'),
+	(4, 3, 0, 'W'),
+	(4, 4, 0, 'W'),
+	(4, 5, 0, 'W'),
+	(4, 6, 0, 'W'),
+	(4, 7, 0, 'W'),
+	(4, 8, 0, 'W'),
+	(4, 9, 0, 'W'),
+	(4, 10, 0, 'W'),
+	(4, 11, 0, 'W'),
+	(4, 12, 0, 'W'),
+	(4, 13, 0, 'W'),
+	(4, 14, 0, 'W'),
+	(4, 15, 0, 'W'),
+	(4, 16, 0, 'W'),
+	(4, 17, 0, 'W'),
+	(4, 18, 0, 'W'),
+	(4, 19, 0, 'W'),
+	(4, 20, 0, 'W'),
+	(5, 1, 0, 'W'),
+	(5, 2, 0, 'W'),
+	(5, 3, 0, 'W'),
+	(5, 4, 0, 'W'),
+	(5, 5, 0, 'W'),
+	(5, 6, 0, 'W'),
+	(5, 7, 0, 'W'),
+	(5, 8, 0, 'W'),
+	(5, 9, 0, 'W'),
+	(5, 10, 0, 'W'),
+	(5, 11, 0, 'W'),
+	(5, 12, 0, 'W'),
+	(5, 13, 0, 'W'),
+	(5, 14, 0, 'W'),
+	(5, 15, 0, 'W'),
+	(5, 16, 0, 'W'),
+	(5, 17, 0, 'W'),
+	(5, 18, 0, 'W'),
+	(5, 19, 0, 'W'),
+	(5, 20, 0, 'W'),
+	(6, 1, 0, 'W'),
+	(6, 2, 0, 'W'),
+	(6, 3, 0, 'W'),
+	(6, 4, 0, 'W'),
+	(6, 5, 0, 'W'),
+	(6, 6, 0, 'W'),
+	(6, 7, 0, 'W'),
+	(6, 8, 0, 'W'),
+	(6, 9, 0, 'W'),
+	(6, 10, 0, 'W'),
+	(6, 11, 0, 'W'),
+	(6, 12, 0, 'W'),
+	(6, 13, 0, 'W'),
+	(6, 14, 0, 'W'),
+	(6, 15, 0, 'W'),
+	(6, 16, 0, 'W'),
+	(6, 17, 0, 'W'),
+	(6, 18, 0, 'W'),
+	(6, 19, 0, 'W'),
+	(6, 20, 0, 'W'),
+	(7, 1, 0, 'W'),
+	(7, 2, 0, 'W'),
+	(7, 3, 0, 'W'),
+	(7, 4, 0, 'W'),
+	(7, 5, 0, 'W'),
+	(7, 6, 0, 'W'),
+	(7, 7, 0, 'W'),
+	(7, 8, 0, 'W'),
+	(7, 9, 0, 'W'),
+	(7, 10, 0, 'W'),
+	(7, 11, 0, 'W'),
+	(7, 12, 0, 'W'),
+	(7, 13, 0, 'W'),
+	(7, 14, 0, 'W'),
+	(7, 15, 0, 'W'),
+	(7, 16, 0, 'W'),
+	(7, 17, 0, 'W'),
+	(7, 18, 0, 'W'),
+	(7, 19, 0, 'W'),
+	(7, 20, 0, 'W'),
+	(8, 1, 0, 'W'),
+	(8, 2, 0, 'W'),
+	(8, 3, 0, 'W'),
+	(8, 4, 0, 'W'),
+	(8, 5, 0, 'W'),
+	(8, 6, 0, 'W'),
+	(8, 7, 0, 'W'),
+	(8, 8, 0, 'W'),
+	(8, 9, 0, 'W'),
+	(8, 10, 0, 'W'),
+	(8, 11, 0, 'W'),
+	(8, 12, 0, 'W'),
+	(8, 13, 0, 'W'),
+	(8, 14, 0, 'W'),
+	(8, 15, 0, 'W'),
+	(8, 16, 0, 'W'),
+	(8, 17, 0, 'W'),
+	(8, 18, 0, 'W'),
+	(8, 19, 0, 'W'),
+	(8, 20, 0, 'W'),
+	(9, 1, 0, 'W'),
+	(9, 2, 0, 'W'),
+	(9, 3, 0, 'W'),
+	(9, 4, 0, 'W'),
+	(9, 5, 0, 'W'),
+	(9, 6, 0, 'W'),
+	(9, 7, 0, 'W'),
+	(9, 8, 0, 'W'),
+	(9, 9, 0, 'W'),
+	(9, 10, 0, 'W'),
+	(9, 11, 0, 'W'),
+	(9, 12, 0, 'W'),
+	(9, 13, 0, 'W'),
+	(9, 14, 0, 'W'),
+	(9, 15, 0, 'W'),
+	(9, 16, 0, 'W'),
+	(9, 17, 0, 'W'),
+	(9, 18, 0, 'W'),
+	(9, 19, 0, 'W'),
+	(9, 20, 0, 'W'),
+	(10, 1, 0, 'W'),
+	(10, 2, 0, 'W'),
+	(10, 3, 0, 'W'),
+	(10, 4, 0, 'W'),
+	(10, 5, 0, 'W'),
+	(10, 6, 0, 'W'),
+	(10, 7, 0, 'W'),
+	(10, 8, 0, 'W'),
+	(10, 9, 0, 'W'),
+	(10, 10, 0, 'W'),
+	(10, 11, 0, 'W'),
+	(10, 12, 0, 'W'),
+	(10, 13, 0, 'W'),
+	(10, 14, 0, 'W'),
+	(10, 15, 0, 'W'),
+	(10, 16, 0, 'W'),
+	(10, 17, 0, 'W'),
+	(10, 18, 0, 'W'),
+	(10, 19, 0, 'W'),
+	(10, 20, 0, 'W'),
+	(11, 1, 0, 'W'),
+	(11, 2, 0, 'W'),
+	(11, 3, 0, 'W'),
+	(11, 4, 0, 'W'),
+	(11, 5, 0, 'W'),
+	(11, 6, 0, 'W'),
+	(11, 7, 0, 'W'),
+	(11, 8, 0, 'W'),
+	(11, 9, 0, 'W'),
+	(11, 10, 0, 'W'),
+	(11, 11, 0, 'W'),
+	(11, 12, 0, 'W'),
+	(11, 13, 0, 'W'),
+	(11, 14, 0, 'W'),
+	(11, 15, 0, 'W'),
+	(11, 16, 0, 'W'),
+	(11, 17, 0, 'W'),
+	(11, 18, 0, 'W'),
+	(11, 19, 0, 'W'),
+	(11, 20, 0, 'W'),
+	(12, 1, 0, 'W'),
+	(12, 2, 0, 'W'),
+	(12, 3, 0, 'W'),
+	(12, 4, 0, 'W'),
+	(12, 5, 0, 'W'),
+	(12, 6, 0, 'W'),
+	(12, 7, 0, 'W'),
+	(12, 8, 0, 'W'),
+	(12, 9, 0, 'W'),
+	(12, 10, 0, 'W'),
+	(12, 11, 0, 'W'),
+	(12, 12, 0, 'W'),
+	(12, 13, 0, 'W'),
+	(12, 14, 0, 'W'),
+	(12, 15, 0, 'W'),
+	(12, 16, 0, 'W'),
+	(12, 17, 0, 'W'),
+	(12, 18, 0, 'W'),
+	(12, 19, 0, 'W'),
+	(12, 20, 0, 'W'),
+	(13, 1, 0, 'W'),
+	(13, 2, 0, 'W'),
+	(13, 3, 0, 'W'),
+	(13, 4, 0, 'W'),
+	(13, 5, 0, 'W'),
+	(13, 6, 0, 'W'),
+	(13, 7, 0, 'W'),
+	(13, 8, 0, 'W'),
+	(13, 9, 0, 'W'),
+	(13, 10, 0, 'W'),
+	(13, 11, 0, 'W'),
+	(13, 12, 0, 'W'),
+	(13, 13, 0, 'W'),
+	(13, 14, 0, 'W'),
+	(13, 15, 0, 'W'),
+	(13, 16, 0, 'W'),
+	(13, 17, 0, 'W'),
+	(13, 18, 0, 'W'),
+	(13, 19, 0, 'W'),
+	(13, 20, 0, 'W'),
+	(14, 1, 0, 'W'),
+	(14, 2, 0, 'W'),
+	(14, 3, 0, 'W'),
+	(14, 4, 0, 'W'),
+	(14, 5, 0, 'W'),
+	(14, 6, 0, 'W'),
+	(14, 7, 0, 'W'),
+	(14, 8, 0, 'W'),
+	(14, 9, 0, 'W'),
+	(14, 10, 0, 'W'),
+	(14, 11, 0, 'W'),
+	(14, 12, 0, 'W'),
+	(14, 13, 0, 'W'),
+	(14, 14, 0, 'W'),
+	(14, 15, 0, 'W'),
+	(14, 16, 0, 'W'),
+	(14, 17, 0, 'W'),
+	(14, 18, 0, 'W'),
+	(14, 19, 0, 'W'),
+	(14, 20, 0, 'W'),
+	(15, 1, 0, 'W'),
+	(15, 2, 0, 'W'),
+	(15, 3, 0, 'W'),
+	(15, 4, 0, 'W'),
+	(15, 5, 0, 'W'),
+	(15, 6, 0, 'W'),
+	(15, 7, 0, 'W'),
+	(15, 8, 0, 'W'),
+	(15, 9, 0, 'W'),
+	(15, 10, 0, 'W'),
+	(15, 11, 0, 'W'),
+	(15, 12, 0, 'W'),
+	(15, 13, 0, 'W'),
+	(15, 14, 0, 'W'),
+	(15, 15, 0, 'W'),
+	(15, 16, 0, 'W'),
+	(15, 17, 0, 'W'),
+	(15, 18, 0, 'W'),
+	(15, 19, 0, 'W'),
+	(15, 20, 0, 'W'),
+	(16, 1, 0, 'W'),
+	(16, 2, 0, 'W'),
+	(16, 3, 0, 'W'),
+	(16, 4, 0, 'W'),
+	(16, 5, 0, 'W'),
+	(16, 6, 0, 'W'),
+	(16, 7, 0, 'W'),
+	(16, 8, 0, 'W'),
+	(16, 9, 0, 'W'),
+	(16, 10, 0, 'W'),
+	(16, 11, 0, 'W'),
+	(16, 12, 0, 'W'),
+	(16, 13, 0, 'W'),
+	(16, 14, 0, 'W'),
+	(16, 15, 0, 'W'),
+	(16, 16, 0, 'W'),
+	(16, 17, 0, 'W'),
+	(16, 18, 0, 'W'),
+	(16, 19, 0, 'W'),
+	(16, 20, 0, 'W'),
+	(17, 1, 0, 'W'),
+	(17, 2, 0, 'W'),
+	(17, 3, 0, 'W'),
+	(17, 4, 0, 'W'),
+	(17, 5, 0, 'W'),
+	(17, 6, 0, 'W'),
+	(17, 7, 0, 'W'),
+	(17, 8, 0, 'W'),
+	(17, 9, 0, 'W'),
+	(17, 10, 0, 'W'),
+	(17, 11, 0, 'W'),
+	(17, 12, 0, 'W'),
+	(17, 13, 0, 'W'),
+	(17, 14, 0, 'W'),
+	(17, 15, 0, 'W'),
+	(17, 16, 0, 'W'),
+	(17, 17, 0, 'W'),
+	(17, 18, 0, 'W'),
+	(17, 19, 0, 'W'),
+	(17, 20, 0, 'W'),
+	(18, 1, 0, 'W'),
+	(18, 2, 0, 'W'),
+	(18, 3, 0, 'W'),
+	(18, 4, 0, 'W'),
+	(18, 5, 0, 'W'),
+	(18, 6, 0, 'W'),
+	(18, 7, 0, 'W'),
+	(18, 8, 0, 'W'),
+	(18, 9, 0, 'W'),
+	(18, 10, 0, 'W'),
+	(18, 11, 0, 'W'),
+	(18, 12, 0, 'W'),
+	(18, 13, 0, 'W'),
+	(18, 14, 0, 'W'),
+	(18, 15, 0, 'W'),
+	(18, 16, 0, 'W'),
+	(18, 17, 0, 'W'),
+	(18, 18, 0, 'W'),
+	(18, 19, 0, 'W'),
+	(18, 20, 0, 'W'),
+	(19, 1, 0, 'W'),
+	(19, 2, 0, 'W'),
+	(19, 3, 0, 'W'),
+	(19, 4, 0, 'W'),
+	(19, 5, 0, 'W'),
+	(19, 6, 0, 'W'),
+	(19, 7, 0, 'W'),
+	(19, 8, 0, 'W'),
+	(19, 9, 0, 'W'),
+	(19, 10, 0, 'W'),
+	(19, 11, 0, 'W'),
+	(19, 12, 0, 'W'),
+	(19, 13, 0, 'W'),
+	(19, 14, 0, 'W'),
+	(19, 15, 0, 'W'),
+	(19, 16, 0, 'W'),
+	(19, 17, 0, 'W'),
+	(19, 18, 0, 'W'),
+	(19, 19, 0, 'W'),
+	(19, 20, 0, 'W'),
+	(20, 1, 0, 'W'),
+	(20, 2, 0, 'W'),
+	(20, 3, 0, 'W'),
+	(20, 4, 0, 'W'),
+	(20, 5, 0, 'W'),
+	(20, 6, 0, 'W'),
+	(20, 7, 0, 'W'),
+	(20, 8, 0, 'W'),
+	(20, 9, 0, 'W'),
+	(20, 10, 0, 'W'),
+	(20, 11, 0, 'W'),
+	(20, 12, 0, 'W'),
+	(20, 13, 0, 'W'),
+	(20, 14, 0, 'W'),
+	(20, 15, 0, 'W'),
+	(20, 16, 0, 'W'),
+	(20, 17, 0, 'W'),
+	(20, 18, 0, 'W'),
+	(20, 19, 0, 'W'),
+	(20, 20, 0, 'W');
 
--- Dumping structure for procedure mysql.clean_board
+-- Dumping structure for procedure blokus.clean_board
 DELIMITER //
 CREATE PROCEDURE `clean_board`()
 BEGIN
@@ -857,7 +855,7 @@ BEGIN
 END//
 DELIMITER ;
 
--- Dumping structure for πίνακας mysql.columns_priv
+-- Dumping structure for πίνακας blokus.columns_priv
 CREATE TABLE IF NOT EXISTS `columns_priv` (
   `Host` char(60) NOT NULL DEFAULT '',
   `Db` char(64) NOT NULL DEFAULT '',
@@ -869,11 +867,11 @@ CREATE TABLE IF NOT EXISTS `columns_priv` (
   PRIMARY KEY (`Host`,`Db`,`User`,`Table_name`,`Column_name`)
 ) ENGINE=Aria DEFAULT CHARSET=utf8 COLLATE=utf8_bin PAGE_CHECKSUM=1 TRANSACTIONAL=1 COMMENT='Column privileges';
 
--- Dumping data for table mysql.columns_priv: 0 rows
+-- Dumping data for table blokus.columns_priv: 0 rows
 /*!40000 ALTER TABLE `columns_priv` DISABLE KEYS */;
 /*!40000 ALTER TABLE `columns_priv` ENABLE KEYS */;
 
--- Dumping structure for πίνακας mysql.column_stats
+-- Dumping structure for πίνακας blokus.column_stats
 CREATE TABLE IF NOT EXISTS `column_stats` (
   `db_name` varchar(64) NOT NULL,
   `table_name` varchar(64) NOT NULL,
@@ -889,11 +887,11 @@ CREATE TABLE IF NOT EXISTS `column_stats` (
   PRIMARY KEY (`db_name`,`table_name`,`column_name`)
 ) ENGINE=Aria DEFAULT CHARSET=utf8 COLLATE=utf8_bin PAGE_CHECKSUM=1 TRANSACTIONAL=0 COMMENT='Statistics on Columns';
 
--- Dumping data for table mysql.column_stats: 0 rows
+-- Dumping data for table blokus.column_stats: 0 rows
 /*!40000 ALTER TABLE `column_stats` DISABLE KEYS */;
 /*!40000 ALTER TABLE `column_stats` ENABLE KEYS */;
 
--- Dumping structure for πίνακας mysql.db
+-- Dumping structure for πίνακας blokus.db
 CREATE TABLE IF NOT EXISTS `db` (
   `Host` char(60) NOT NULL DEFAULT '',
   `Db` char(64) NOT NULL DEFAULT '',
@@ -922,14 +920,14 @@ CREATE TABLE IF NOT EXISTS `db` (
   KEY `User` (`User`)
 ) ENGINE=Aria DEFAULT CHARSET=utf8 COLLATE=utf8_bin PAGE_CHECKSUM=1 TRANSACTIONAL=1 COMMENT='Database privileges';
 
--- Dumping data for table mysql.db: 2 rows
+-- Dumping data for table blokus.db: 2 rows
 /*!40000 ALTER TABLE `db` DISABLE KEYS */;
 INSERT INTO `db` (`Host`, `Db`, `User`, `Select_priv`, `Insert_priv`, `Update_priv`, `Delete_priv`, `Create_priv`, `Drop_priv`, `Grant_priv`, `References_priv`, `Index_priv`, `Alter_priv`, `Create_tmp_table_priv`, `Lock_tables_priv`, `Create_view_priv`, `Show_view_priv`, `Create_routine_priv`, `Alter_routine_priv`, `Execute_priv`, `Event_priv`, `Trigger_priv`, `Delete_history_priv`) VALUES
 	('%', 'test', '', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'N', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'N', 'N', 'Y', 'Y', 'Y'),
 	('%', 'test\\_%', '', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'N', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'N', 'N', 'Y', 'Y', 'Y');
 /*!40000 ALTER TABLE `db` ENABLE KEYS */;
 
--- Dumping structure for procedure mysql.DropGeometryColumn
+-- Dumping structure for procedure blokus.DropGeometryColumn
 DELIMITER //
 CREATE PROCEDURE `DropGeometryColumn`(catalog varchar(64), t_schema varchar(64),
    t_name varchar(64), geometry_column varchar(64))
@@ -938,7 +936,7 @@ begin
   set @qwe= concat('ALTER TABLE ', t_schema, '.', t_name, ' DROP ', geometry_column); PREPARE ls from @qwe; execute ls; deallocate prepare ls; end//
 DELIMITER ;
 
--- Dumping structure for πίνακας mysql.event
+-- Dumping structure for πίνακας blokus.event
 CREATE TABLE IF NOT EXISTS `event` (
   `db` char(64) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
   `name` char(64) NOT NULL DEFAULT '',
@@ -965,11 +963,11 @@ CREATE TABLE IF NOT EXISTS `event` (
   PRIMARY KEY (`db`,`name`)
 ) ENGINE=Aria DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci PAGE_CHECKSUM=1 TRANSACTIONAL=1 COMMENT='Events';
 
--- Dumping data for table mysql.event: 0 rows
+-- Dumping data for table blokus.event: 0 rows
 /*!40000 ALTER TABLE `event` DISABLE KEYS */;
 /*!40000 ALTER TABLE `event` ENABLE KEYS */;
 
--- Dumping structure for πίνακας mysql.func
+-- Dumping structure for πίνακας blokus.func
 CREATE TABLE IF NOT EXISTS `func` (
   `name` char(64) NOT NULL DEFAULT '',
   `ret` tinyint(1) NOT NULL DEFAULT 0,
@@ -978,11 +976,11 @@ CREATE TABLE IF NOT EXISTS `func` (
   PRIMARY KEY (`name`)
 ) ENGINE=Aria DEFAULT CHARSET=utf8 COLLATE=utf8_bin PAGE_CHECKSUM=1 TRANSACTIONAL=1 COMMENT='User defined functions';
 
--- Dumping data for table mysql.func: 0 rows
+-- Dumping data for table blokus.func: 0 rows
 /*!40000 ALTER TABLE `func` DISABLE KEYS */;
 /*!40000 ALTER TABLE `func` ENABLE KEYS */;
 
--- Dumping structure for πίνακας mysql.game_status
+-- Dumping structure for πίνακας blokus.game_status
 CREATE TABLE IF NOT EXISTS `game_status` (
   `status` enum('not active','initialized','started','ended','aborded') NOT NULL DEFAULT 'not active',
   `p_turn` enum('R','B','G','Y') DEFAULT NULL,
@@ -990,9 +988,9 @@ CREATE TABLE IF NOT EXISTS `game_status` (
   `last_change` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table mysql.game_status: ~0 rows (approximately)
+-- Dumping data for table blokus.game_status: ~0 rows (approximately)
 
--- Dumping structure for πίνακας mysql.general_log
+-- Dumping structure for πίνακας blokus.general_log
 CREATE TABLE IF NOT EXISTS `general_log` (
   `event_time` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6),
   `user_host` mediumtext NOT NULL,
@@ -1002,11 +1000,11 @@ CREATE TABLE IF NOT EXISTS `general_log` (
   `argument` mediumtext NOT NULL
 ) ENGINE=CSV DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='General log';
 
--- Dumping data for table mysql.general_log: 0 rows
+-- Dumping data for table blokus.general_log: 2 rows
 /*!40000 ALTER TABLE `general_log` DISABLE KEYS */;
 /*!40000 ALTER TABLE `general_log` ENABLE KEYS */;
 
--- Dumping structure for πίνακας mysql.global_priv
+-- Dumping structure for πίνακας blokus.global_priv
 CREATE TABLE IF NOT EXISTS `global_priv` (
   `Host` char(60) NOT NULL DEFAULT '',
   `User` char(80) NOT NULL DEFAULT '',
@@ -1014,7 +1012,7 @@ CREATE TABLE IF NOT EXISTS `global_priv` (
   PRIMARY KEY (`Host`,`User`)
 ) ENGINE=Aria DEFAULT CHARSET=utf8 COLLATE=utf8_bin PAGE_CHECKSUM=1 TRANSACTIONAL=1 COMMENT='Users and global privileges';
 
--- Dumping data for table mysql.global_priv: 5 rows
+-- Dumping data for table blokus.global_priv: 5 rows
 /*!40000 ALTER TABLE `global_priv` DISABLE KEYS */;
 INSERT INTO `global_priv` (`Host`, `User`, `Priv`) VALUES
 	('localhost', 'mariadb.sys', '{"access":0,"plugin":"mysql_native_password","authentication_string":"","account_locked":true,"password_last_changed":0}'),
@@ -1024,7 +1022,7 @@ INSERT INTO `global_priv` (`Host`, `User`, `Priv`) VALUES
 	('users.iee.ihu.gr', '', '{}');
 /*!40000 ALTER TABLE `global_priv` ENABLE KEYS */;
 
--- Dumping structure for πίνακας mysql.gtid_slave_pos
+-- Dumping structure for πίνακας blokus.gtid_slave_pos
 CREATE TABLE IF NOT EXISTS `gtid_slave_pos` (
   `domain_id` int(10) unsigned NOT NULL,
   `sub_id` bigint(20) unsigned NOT NULL,
@@ -1033,9 +1031,9 @@ CREATE TABLE IF NOT EXISTS `gtid_slave_pos` (
   PRIMARY KEY (`domain_id`,`sub_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci COMMENT='Replication slave GTID position';
 
--- Dumping data for table mysql.gtid_slave_pos: ~0 rows (approximately)
+-- Dumping data for table blokus.gtid_slave_pos: ~0 rows (approximately)
 
--- Dumping structure for πίνακας mysql.help_category
+-- Dumping structure for πίνακας blokus.help_category
 CREATE TABLE IF NOT EXISTS `help_category` (
   `help_category_id` smallint(5) unsigned NOT NULL,
   `name` char(64) NOT NULL,
@@ -1045,7 +1043,7 @@ CREATE TABLE IF NOT EXISTS `help_category` (
   UNIQUE KEY `name` (`name`)
 ) ENGINE=Aria DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci PAGE_CHECKSUM=1 TRANSACTIONAL=0 COMMENT='help categories';
 
--- Dumping data for table mysql.help_category: 50 rows
+-- Dumping data for table blokus.help_category: 50 rows
 /*!40000 ALTER TABLE `help_category` DISABLE KEYS */;
 INSERT INTO `help_category` (`help_category_id`, `name`, `parent_category_id`, `url`) VALUES
 	(1, 'Contents', 0, ''),
@@ -1100,7 +1098,7 @@ INSERT INTO `help_category` (`help_category_id`, `name`, `parent_category_id`, `
 	(50, 'Prepared Statements', 1, '');
 /*!40000 ALTER TABLE `help_category` ENABLE KEYS */;
 
--- Dumping structure for πίνακας mysql.help_keyword
+-- Dumping structure for πίνακας blokus.help_keyword
 CREATE TABLE IF NOT EXISTS `help_keyword` (
   `help_keyword_id` int(10) unsigned NOT NULL,
   `name` char(64) NOT NULL,
@@ -1108,7 +1106,7 @@ CREATE TABLE IF NOT EXISTS `help_keyword` (
   UNIQUE KEY `name` (`name`)
 ) ENGINE=Aria DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci PAGE_CHECKSUM=1 TRANSACTIONAL=0 COMMENT='help keywords';
 
--- Dumping data for table mysql.help_keyword: 106 rows
+-- Dumping data for table blokus.help_keyword: 106 rows
 /*!40000 ALTER TABLE `help_keyword` DISABLE KEYS */;
 INSERT INTO `help_keyword` (`help_keyword_id`, `name`) VALUES
 	(1, 'work'),
@@ -1219,7 +1217,7 @@ INSERT INTO `help_keyword` (`help_keyword_id`, `name`) VALUES
 	(106, 'deallocate prepare');
 /*!40000 ALTER TABLE `help_keyword` ENABLE KEYS */;
 
--- Dumping structure for πίνακας mysql.help_relation
+-- Dumping structure for πίνακας blokus.help_relation
 CREATE TABLE IF NOT EXISTS `help_relation` (
   `help_topic_id` int(10) unsigned NOT NULL,
   `help_keyword_id` int(10) unsigned NOT NULL,
@@ -1227,7 +1225,7 @@ CREATE TABLE IF NOT EXISTS `help_relation` (
   KEY `help_topic_id` (`help_topic_id`)
 ) ENGINE=Aria DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci PAGE_CHECKSUM=1 TRANSACTIONAL=0 COMMENT='keyword-topic relation';
 
--- Dumping data for table mysql.help_relation: 201 rows
+-- Dumping data for table blokus.help_relation: 201 rows
 /*!40000 ALTER TABLE `help_relation` DISABLE KEYS */;
 INSERT INTO `help_relation` (`help_topic_id`, `help_keyword_id`) VALUES
 	(94, 1),
@@ -1433,7 +1431,7 @@ INSERT INTO `help_relation` (`help_topic_id`, `help_keyword_id`) VALUES
 	(816, 106);
 /*!40000 ALTER TABLE `help_relation` ENABLE KEYS */;
 
--- Dumping structure for πίνακας mysql.help_topic
+-- Dumping structure for πίνακας blokus.help_topic
 CREATE TABLE IF NOT EXISTS `help_topic` (
   `help_topic_id` int(10) unsigned NOT NULL,
   `name` char(64) NOT NULL,
@@ -1445,7 +1443,7 @@ CREATE TABLE IF NOT EXISTS `help_topic` (
   UNIQUE KEY `name` (`name`)
 ) ENGINE=Aria DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci PAGE_CHECKSUM=1 TRANSACTIONAL=0 COMMENT='help topics';
 
--- Dumping data for table mysql.help_topic: 817 rows
+-- Dumping data for table blokus.help_topic: 817 rows
 /*!40000 ALTER TABLE `help_topic` DISABLE KEYS */;
 INSERT INTO `help_topic` (`help_topic_id`, `name`, `help_category_id`, `description`, `example`, `url`) VALUES
 	(1, 'HELP_DATE', 9, 'Help Contents generated from the MariaDB Knowledge Base on 22 October 2022.', '', ''),
@@ -2269,7 +2267,7 @@ INSERT INTO `help_topic` (`help_topic_id`, `name`, `help_category_id`, `descript
 	(817, 'EXECUTE IMMEDIATE', 50, 'MariaDB starting with 10.2.3\n----------------------------\nEXECUTE IMMEDIATE was introduced in MariaDB 10.2.3.\n\nSyntax\n------\n\nEXECUTE IMMEDIATE statement\n\nDescription\n-----------\n\nEXECUTE IMMEDIATE executes a dynamic SQL statement created on the fly, which\ncan reduce performance overhead.\n\nFor example:\n\nEXECUTE IMMEDIATE \'SELECT 1\'\n\nwhich is shorthand for:\n\nprepare stmt from "select 1";\nexecute stmt;\ndeallocate prepare stmt;\n\nEXECUTE IMMEDIATE supports complex expressions as prepare source and\nparameters:\n\nEXECUTE IMMEDIATE CONCAT(\'SELECT COUNT(*) FROM \', \'t1\', \' WHERE a=?\') USING\n5+5;\n\nLimitations: subselects and stored function calls are not supported as a\nprepare source.\n\nThe following examples return an error:\n\nCREATE OR REPLACE FUNCTION f1() RETURNS VARCHAR(64) RETURN \'SELECT * FROM t1\';\nEXECUTE IMMEDIATE f1();\nERROR 1970 (42000): EXECUTE IMMEDIATE does not support subqueries or stored\nfunctions\n\nEXECUTE IMMEDIATE (SELECT \'SELECT * FROM t1\');\nERROR 1064 (42000): You have an error in your SQL syntax; check the manual\nthat \n corresponds to your MariaDB server version for the right syntax to use near\n \'SELECT \'SELECT * FROM t1\')\' at line 1\n\nCREATE OR REPLACE FUNCTION f1() RETURNS INT RETURN 10;\nEXECUTE IMMEDIATE \'SELECT * FROM t1 WHERE a=?\' USING f1();\nERROR 1970 (42000): EXECUTE..USING does not support subqueries or stored\nfunctions\n\nEXECUTE IMMEDIATE \'SELECT * FROM t1 WHERE a=?\' USING (SELECT 10);\nERROR 1064 (42000): You have an error in your SQL syntax; check the manual\nthat \n corresponds to your MariaDB server version for the right syntax to use near\n \'SELECT 10)\' at line 1\n\nOne can use a user or an SP variable as a workaround:\n\nCREATE OR REPLACE FUNCTION f1() RETURNS VARCHAR(64) RETURN \'SELECT * FROM t1\';\nSET @stmt=f1();\nEXECUTE IMMEDIATE @stmt;\n\nSET @stmt=(SELECT \'SELECT 1\');\nEXECUTE IMMEDIATE @stmt;\n\nCREATE OR REPLACE FUNCTION f1() RETURNS INT RETURN 10;\nSET @param=f1();\nEXECUTE IMMEDIATE \'SELECT * FROM t1 WHERE a=?\' USING @param;\n\nSET @param=(SELECT 10);\nEXECUTE IMMEDIATE \'SELECT * FROM t1 WHERE a=?\' USING @param;\n\nEXECUTE IMMEDIATE supports user variables and SP variables as OUT parameters\n\nDELIMITER $$\nCREATE OR REPLACE PROCEDURE p1(OUT a INT)\nBEGIN\n SET a:= 10;\nEND;\n$$\nDELIMITER ;\nSET @a=2;\nEXECUTE IMMEDIATE \'CALL p1(?)\' USING @a;\nSELECT @a;\n+------+\n| @a   |\n+------+\n|   10 |\n+------+\n\nSimilar to PREPARE, EXECUTE IMMEDIATE is allowed in stored procedures but is\nnot allowed in stored functions.\n\nThis example uses EXECUTE IMMEDIATE inside a stored procedure:\n\nDELIMITER $$\nCREATE OR REPLACE PROCEDURE p1()\nBEGIN\n EXECUTE IMMEDIATE \'SELECT 1\';\nEND;\n$$\nDELIMITER ;\nCALL p1;\n+---+\n| 1 |\n+---+\n| 1 |\n+---+\n\nThis script returns an error:\n\nDELIMITER $$\nCREATE FUNCTION f1() RETURNS INT\nBEGIN\n EXECUTE IMMEDIATE \'DO 1\';\n RETURN 1;\nEND;\n$$\nERROR 1336 (0A000): Dynamic SQL is not allowed in stored function or trigger\n\nEXECUTE IMMEDIATE can use DEFAULT and IGNORE indicators as bind parameters:\n\nCREATE OR REPLACE TABLE t1 (a INT DEFAULT 10);\nEXECUTE IMMEDIATE \'INSERT INTO t1 VALUES (?)\' USING DEFAULT;\nSELECT * FROM t1;\n+------+\n| a    |\n+------+\n|   10 |\n+------+\n\nEXECUTE IMMEDIATE increments the Com_execute_immediate status variable, as\nwell as the Com_stmt_prepare, Com_stmt_execute and Com_stmt_close status\nvariables.\n\nNote, EXECUTE IMMEDIATE does not increment the Com_execute_sql status\nvariable. Com_execute_sql is used only for PREPARE..EXECUTE.\n\nThis session screenshot demonstrates how EXECUTE IMMEDIATE affects status\nvariables:\n\nSELECT * FROM INFORMATION_SCHEMA.SESSION_STATUS WHERE VARIABLE_NAME RLIKE \n (\'COM_(EXECUTE|STMT_PREPARE|STMT_EXECUTE|STMT_CLOSE)\');\n\n+-----------------------+----------------+\n| VARIABLE_NAME         | VARIABLE_VALUE |\n+-----------------------+----------------+\n| COM_EXECUTE_IMMEDIATE | 0              |\n| COM_EXECUTE_SQL       | 0              |\n| COM_STMT_CLOSE        | 0              |\n| COM_STMT_EXECUTE      | 0              |\n| COM_STMT_PREPARE      | 0              |\n+-----------------------+----------------+\n\nEXECUTE IMMEDIATE \'SELECT 1\';\n+---+\n| 1 |\n+---+\n| 1 |\n+---+\n\nSELECT * FROM INFORMATION_SCHEMA.SESSION_STATUS WHERE VARIABLE_NAME RLIKE \n (\'COM_(EXECUTE|STMT_PREPARE|STMT_EXECUTE|STMT_CLOSE)\');\n+-----------------------+----------------+\n| VARIABLE_NAME         | VARIABLE_VALUE |\n+-----------------------+----------------+\n| COM_EXECUTE_IMMEDIATE | 1              |\n| COM_EXECUTE_SQL       | 0              |\n| COM_STMT_CLOSE        | 1              |\n| COM_STMT_EXECUTE      | 1              |\n| COM_STMT_PREPARE      | 1              |\n+-----------------------+----------------+\n\nURL: https://mariadb.com/kb/en/execute-immediate/', '', 'https://mariadb.com/kb/en/execute-immediate/');
 /*!40000 ALTER TABLE `help_topic` ENABLE KEYS */;
 
--- Dumping structure for πίνακας mysql.index_stats
+-- Dumping structure for πίνακας blokus.index_stats
 CREATE TABLE IF NOT EXISTS `index_stats` (
   `db_name` varchar(64) NOT NULL,
   `table_name` varchar(64) NOT NULL,
@@ -2279,11 +2277,11 @@ CREATE TABLE IF NOT EXISTS `index_stats` (
   PRIMARY KEY (`db_name`,`table_name`,`index_name`,`prefix_arity`)
 ) ENGINE=Aria DEFAULT CHARSET=utf8 COLLATE=utf8_bin PAGE_CHECKSUM=1 TRANSACTIONAL=0 COMMENT='Statistics on Indexes';
 
--- Dumping data for table mysql.index_stats: 0 rows
+-- Dumping data for table blokus.index_stats: 0 rows
 /*!40000 ALTER TABLE `index_stats` DISABLE KEYS */;
 /*!40000 ALTER TABLE `index_stats` ENABLE KEYS */;
 
--- Dumping structure for πίνακας mysql.innodb_index_stats
+-- Dumping structure for πίνακας blokus.innodb_index_stats
 CREATE TABLE IF NOT EXISTS `innodb_index_stats` (
   `database_name` varchar(64) NOT NULL,
   `table_name` varchar(199) NOT NULL,
@@ -2296,7 +2294,7 @@ CREATE TABLE IF NOT EXISTS `innodb_index_stats` (
   PRIMARY KEY (`database_name`,`table_name`,`index_name`,`stat_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin STATS_PERSISTENT=0;
 
--- Dumping data for table mysql.innodb_index_stats: ~11 rows (approximately)
+-- Dumping data for table blokus.innodb_index_stats: ~21 rows (approximately)
 INSERT INTO `innodb_index_stats` (`database_name`, `table_name`, `index_name`, `last_update`, `stat_name`, `stat_value`, `sample_size`, `stat_description`) VALUES
 	('mysql', 'board', 'PRIMARY', '2023-01-05 18:16:40', 'n_diff_pfx01', 20, 1, 'x'),
 	('mysql', 'board', 'PRIMARY', '2023-01-05 18:16:40', 'n_diff_pfx02', 400, 1, 'x,y'),
@@ -2320,7 +2318,7 @@ INSERT INTO `innodb_index_stats` (`database_name`, `table_name`, `index_name`, `
 	('mysql', 'users', 'PRIMARY', '2023-01-05 12:04:20', 'n_leaf_pages', 1, NULL, 'Number of leaf pages in the index'),
 	('mysql', 'users', 'PRIMARY', '2023-01-05 12:04:20', 'size', 1, NULL, 'Number of pages in the index');
 
--- Dumping structure for πίνακας mysql.innodb_table_stats
+-- Dumping structure for πίνακας blokus.innodb_table_stats
 CREATE TABLE IF NOT EXISTS `innodb_table_stats` (
   `database_name` varchar(64) NOT NULL,
   `table_name` varchar(199) NOT NULL,
@@ -2331,7 +2329,7 @@ CREATE TABLE IF NOT EXISTS `innodb_table_stats` (
   PRIMARY KEY (`database_name`,`table_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin STATS_PERSISTENT=0;
 
--- Dumping data for table mysql.innodb_table_stats: ~3 rows (approximately)
+-- Dumping data for table blokus.innodb_table_stats: ~6 rows (approximately)
 INSERT INTO `innodb_table_stats` (`database_name`, `table_name`, `last_update`, `n_rows`, `clustered_index_size`, `sum_of_other_index_sizes`) VALUES
 	('mysql', 'board', '2023-01-05 18:16:40', 400, 1, 0),
 	('mysql', 'board_empty', '2023-01-05 18:17:41', 400, 1, 0),
@@ -2340,29 +2338,124 @@ INSERT INTO `innodb_table_stats` (`database_name`, `table_name`, `last_update`, 
 	('mysql', 'players', '2023-01-05 16:40:31', 0, 1, 0),
 	('mysql', 'users', '2023-01-05 12:04:20', 0, 1, 0);
 
--- Dumping structure for πίνακας mysql.players
+-- Dumping structure for πίνακας blokus.pieces
+CREATE TABLE IF NOT EXISTS `pieces` (
+  `pieces_color` enum('R','G','B','Y') NOT NULL,
+  `pieces` enum('F','I','N','P','T','U','V','W','X','Y','Z','IM','LM','ZM','SQ','TM','LN','I3','I2','I1') NOT NULL,
+  PRIMARY KEY (`pieces_color`,`pieces`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Dumping data for table blokus.pieces: ~80 rows (approximately)
+INSERT INTO `pieces` (`pieces_color`, `pieces`) VALUES
+	('R', 'F'),
+	('R', 'I'),
+	('R', 'N'),
+	('R', 'P'),
+	('R', 'T'),
+	('R', 'U'),
+	('R', 'V'),
+	('R', 'W'),
+	('R', 'X'),
+	('R', 'Y'),
+	('R', 'Z'),
+	('R', 'IM'),
+	('R', 'LM'),
+	('R', 'ZM'),
+	('R', 'SQ'),
+	('R', 'TM'),
+	('R', 'LN'),
+	('R', 'I3'),
+	('R', 'I2'),
+	('R', 'I1'),
+	('G', 'F'),
+	('G', 'I'),
+	('G', 'N'),
+	('G', 'P'),
+	('G', 'T'),
+	('G', 'U'),
+	('G', 'V'),
+	('G', 'W'),
+	('G', 'X'),
+	('G', 'Y'),
+	('G', 'Z'),
+	('G', 'IM'),
+	('G', 'LM'),
+	('G', 'ZM'),
+	('G', 'SQ'),
+	('G', 'TM'),
+	('G', 'LN'),
+	('G', 'I3'),
+	('G', 'I2'),
+	('G', 'I1'),
+	('B', 'F'),
+	('B', 'I'),
+	('B', 'N'),
+	('B', 'P'),
+	('B', 'T'),
+	('B', 'U'),
+	('B', 'V'),
+	('B', 'W'),
+	('B', 'X'),
+	('B', 'Y'),
+	('B', 'Z'),
+	('B', 'IM'),
+	('B', 'LM'),
+	('B', 'ZM'),
+	('B', 'SQ'),
+	('B', 'TM'),
+	('B', 'LN'),
+	('B', 'I3'),
+	('B', 'I2'),
+	('B', 'I1'),
+	('Y', 'F'),
+	('Y', 'I'),
+	('Y', 'N'),
+	('Y', 'P'),
+	('Y', 'T'),
+	('Y', 'U'),
+	('Y', 'V'),
+	('Y', 'W'),
+	('Y', 'X'),
+	('Y', 'Y'),
+	('Y', 'Z'),
+	('Y', 'IM'),
+	('Y', 'LM'),
+	('Y', 'ZM'),
+	('Y', 'SQ'),
+	('Y', 'TM'),
+	('Y', 'LN'),
+	('Y', 'I3'),
+	('Y', 'I2'),
+	('Y', 'I1');
+
+-- Dumping structure for πίνακας blokus.players
 CREATE TABLE IF NOT EXISTS `players` (
   `username` varchar(20) DEFAULT NULL,
-  `piece_color` enum('B','W') NOT NULL,
+  `piece_color` enum('B','R','G','Y') NOT NULL,
   `token` varchar(100) DEFAULT NULL,
   `last_action` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`piece_color`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table mysql.players: ~0 rows (approximately)
+-- Dumping data for table blokus.players: ~4 rows (approximately)
+INSERT INTO `players` (`username`, `piece_color`, `token`, `last_action`) VALUES
+	('name', 'B', NULL, '2023-01-07 10:54:09'),
+	('name', 'R', NULL, '2023-01-07 10:54:09'),
+	('name', 'G', NULL, '2023-01-07 10:54:09'),
+	('name', 'Y', NULL, '2023-01-07 10:54:09');
 
--- Dumping structure for πίνακας mysql.plugin
+-- Dumping structure for πίνακας blokus.plugin
 CREATE TABLE IF NOT EXISTS `plugin` (
   `name` varchar(64) NOT NULL DEFAULT '',
   `dl` varchar(128) NOT NULL DEFAULT '',
   PRIMARY KEY (`name`)
 ) ENGINE=Aria DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci PAGE_CHECKSUM=1 TRANSACTIONAL=1 COMMENT='MySQL plugins';
 
--- Dumping data for table mysql.plugin: 0 rows
+-- Dumping data for table blokus.plugin: 0 rows
 /*!40000 ALTER TABLE `plugin` DISABLE KEYS */;
 /*!40000 ALTER TABLE `plugin` ENABLE KEYS */;
 
--- Dumping structure for πίνακας mysql.proc
+-- Dumping structure for πίνακας blokus.proc
 CREATE TABLE IF NOT EXISTS `proc` (
   `db` char(64) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
   `name` char(64) NOT NULL DEFAULT '',
@@ -2388,7 +2481,7 @@ CREATE TABLE IF NOT EXISTS `proc` (
   PRIMARY KEY (`db`,`name`,`type`)
 ) ENGINE=Aria DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci PAGE_CHECKSUM=1 TRANSACTIONAL=1 COMMENT='Stored Procedures';
 
--- Dumping data for table mysql.proc: 3 rows
+-- Dumping data for table blokus.proc: 3 rows
 /*!40000 ALTER TABLE `proc` DISABLE KEYS */;
 INSERT INTO `proc` (`db`, `name`, `type`, `specific_name`, `language`, `sql_data_access`, `is_deterministic`, `security_type`, `param_list`, `returns`, `body`, `definer`, `created`, `modified`, `sql_mode`, `comment`, `character_set_client`, `collation_connection`, `db_collation`, `body_utf8`, `aggregate`) VALUES
 	('mysql', 'AddGeometryColumn', 'PROCEDURE', 'AddGeometryColumn', 'SQL', 'CONTAINS_SQL', 'NO', 'INVOKER', _binary 0x636174616c6f672076617263686172283634292c20745f736368656d612076617263686172283634292c0a202020745f6e616d652076617263686172283634292c2067656f6d657472795f636f6c756d6e2076617263686172283634292c20745f7372696420696e74, _binary '', _binary 0x626567696e0a202073657420407177653d20636f6e6361742827414c544552205441424c4520272c20745f736368656d612c20272e272c20745f6e616d652c20272041444420272c2067656f6d657472795f636f6c756d6e2c272047454f4d45545259205245465f53595354454d5f49443d272c20745f73726964293b2050524550415245206c732066726f6d20407177653b2065786563757465206c733b206465616c6c6f636174652070726570617265206c733b20656e64, 'mariadb.sys@localhost', '2023-01-04 15:02:01', '2023-01-04 15:02:01', '', '', 'utf8', 'utf8_general_ci', 'utf8mb4_general_ci', _binary 0x626567696e0a202073657420407177653d20636f6e6361742827414c544552205441424c4520272c20745f736368656d612c20272e272c20745f6e616d652c20272041444420272c2067656f6d657472795f636f6c756d6e2c272047454f4d45545259205245465f53595354454d5f49443d272c20745f73726964293b2050524550415245206c732066726f6d20407177653b2065786563757465206c733b206465616c6c6f636174652070726570617265206c733b20656e64, 'NONE'),
@@ -2396,7 +2489,7 @@ INSERT INTO `proc` (`db`, `name`, `type`, `specific_name`, `language`, `sql_data
 	('mysql', 'clean_board', 'PROCEDURE', 'clean_board', 'SQL', 'CONTAINS_SQL', 'NO', 'DEFINER', _binary '', _binary '', _binary 0x424547494e0d0a095245504c41434520494e544f20626f6172642053454c454354202a2046524f4d20626f6172645f656d7074793b0d0a454e44, 'it164644@localhost', '2023-01-05 18:18:02', '2023-01-05 18:18:02', 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION', '', 'utf8mb4', 'utf8mb4_general_ci', 'utf8mb4_general_ci', _binary 0x424547494e0d0a095245504c41434520494e544f20626f6172642053454c454354202a2046524f4d20626f6172645f656d7074793b0d0a454e44, 'NONE');
 /*!40000 ALTER TABLE `proc` ENABLE KEYS */;
 
--- Dumping structure for πίνακας mysql.procs_priv
+-- Dumping structure for πίνακας blokus.procs_priv
 CREATE TABLE IF NOT EXISTS `procs_priv` (
   `Host` char(60) NOT NULL DEFAULT '',
   `Db` char(64) NOT NULL DEFAULT '',
@@ -2410,11 +2503,11 @@ CREATE TABLE IF NOT EXISTS `procs_priv` (
   KEY `Grantor` (`Grantor`)
 ) ENGINE=Aria DEFAULT CHARSET=utf8 COLLATE=utf8_bin PAGE_CHECKSUM=1 TRANSACTIONAL=1 COMMENT='Procedure privileges';
 
--- Dumping data for table mysql.procs_priv: 0 rows
+-- Dumping data for table blokus.procs_priv: 0 rows
 /*!40000 ALTER TABLE `procs_priv` DISABLE KEYS */;
 /*!40000 ALTER TABLE `procs_priv` ENABLE KEYS */;
 
--- Dumping structure for πίνακας mysql.proxies_priv
+-- Dumping structure for πίνακας blokus.proxies_priv
 CREATE TABLE IF NOT EXISTS `proxies_priv` (
   `Host` char(60) NOT NULL DEFAULT '',
   `User` char(80) NOT NULL DEFAULT '',
@@ -2427,14 +2520,14 @@ CREATE TABLE IF NOT EXISTS `proxies_priv` (
   KEY `Grantor` (`Grantor`)
 ) ENGINE=Aria DEFAULT CHARSET=utf8 COLLATE=utf8_bin PAGE_CHECKSUM=1 TRANSACTIONAL=1 COMMENT='User proxy privileges';
 
--- Dumping data for table mysql.proxies_priv: 2 rows
+-- Dumping data for table blokus.proxies_priv: 2 rows
 /*!40000 ALTER TABLE `proxies_priv` DISABLE KEYS */;
 INSERT INTO `proxies_priv` (`Host`, `User`, `Proxied_host`, `Proxied_user`, `With_grant`, `Grantor`, `Timestamp`) VALUES
 	('localhost', 'root', '', '', 1, '', '2023-01-04 15:02:01'),
 	('users.iee.ihu.gr', 'root', '', '', 1, '', '2023-01-04 15:02:01');
 /*!40000 ALTER TABLE `proxies_priv` ENABLE KEYS */;
 
--- Dumping structure for πίνακας mysql.roles_mapping
+-- Dumping structure for πίνακας blokus.roles_mapping
 CREATE TABLE IF NOT EXISTS `roles_mapping` (
   `Host` char(60) NOT NULL DEFAULT '',
   `User` char(80) NOT NULL DEFAULT '',
@@ -2443,11 +2536,11 @@ CREATE TABLE IF NOT EXISTS `roles_mapping` (
   UNIQUE KEY `Host` (`Host`,`User`,`Role`)
 ) ENGINE=Aria DEFAULT CHARSET=utf8 COLLATE=utf8_bin PAGE_CHECKSUM=1 TRANSACTIONAL=1 COMMENT='Granted roles';
 
--- Dumping data for table mysql.roles_mapping: 0 rows
+-- Dumping data for table blokus.roles_mapping: 0 rows
 /*!40000 ALTER TABLE `roles_mapping` DISABLE KEYS */;
 /*!40000 ALTER TABLE `roles_mapping` ENABLE KEYS */;
 
--- Dumping structure for πίνακας mysql.servers
+-- Dumping structure for πίνακας blokus.servers
 CREATE TABLE IF NOT EXISTS `servers` (
   `Server_name` char(64) NOT NULL DEFAULT '',
   `Host` varchar(2048) NOT NULL DEFAULT '',
@@ -2461,11 +2554,11 @@ CREATE TABLE IF NOT EXISTS `servers` (
   PRIMARY KEY (`Server_name`)
 ) ENGINE=Aria DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci PAGE_CHECKSUM=1 TRANSACTIONAL=1 COMMENT='MySQL Foreign Servers table';
 
--- Dumping data for table mysql.servers: 0 rows
+-- Dumping data for table blokus.servers: 0 rows
 /*!40000 ALTER TABLE `servers` DISABLE KEYS */;
 /*!40000 ALTER TABLE `servers` ENABLE KEYS */;
 
--- Dumping structure for πίνακας mysql.slow_log
+-- Dumping structure for πίνακας blokus.slow_log
 CREATE TABLE IF NOT EXISTS `slow_log` (
   `start_time` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6),
   `user_host` mediumtext NOT NULL,
@@ -2482,11 +2575,11 @@ CREATE TABLE IF NOT EXISTS `slow_log` (
   `rows_affected` int(11) NOT NULL
 ) ENGINE=CSV DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Slow log';
 
--- Dumping data for table mysql.slow_log: 2 rows
+-- Dumping data for table blokus.slow_log: 2 rows
 /*!40000 ALTER TABLE `slow_log` DISABLE KEYS */;
 /*!40000 ALTER TABLE `slow_log` ENABLE KEYS */;
 
--- Dumping structure for πίνακας mysql.tables_priv
+-- Dumping structure for πίνακας blokus.tables_priv
 CREATE TABLE IF NOT EXISTS `tables_priv` (
   `Host` char(60) NOT NULL DEFAULT '',
   `Db` char(64) NOT NULL DEFAULT '',
@@ -2500,13 +2593,13 @@ CREATE TABLE IF NOT EXISTS `tables_priv` (
   KEY `Grantor` (`Grantor`)
 ) ENGINE=Aria DEFAULT CHARSET=utf8 COLLATE=utf8_bin PAGE_CHECKSUM=1 TRANSACTIONAL=1 COMMENT='Table privileges';
 
--- Dumping data for table mysql.tables_priv: 1 rows
+-- Dumping data for table blokus.tables_priv: 1 rows
 /*!40000 ALTER TABLE `tables_priv` DISABLE KEYS */;
 INSERT INTO `tables_priv` (`Host`, `Db`, `User`, `Table_name`, `Grantor`, `Timestamp`, `Table_priv`, `Column_priv`) VALUES
 	('localhost', 'mysql', 'mariadb.sys', 'global_priv', 'root@localhost', '0000-00-00 00:00:00', 'Select,Delete', '');
 /*!40000 ALTER TABLE `tables_priv` ENABLE KEYS */;
 
--- Dumping structure for πίνακας mysql.table_stats
+-- Dumping structure for πίνακας blokus.table_stats
 CREATE TABLE IF NOT EXISTS `table_stats` (
   `db_name` varchar(64) NOT NULL,
   `table_name` varchar(64) NOT NULL,
@@ -2514,44 +2607,44 @@ CREATE TABLE IF NOT EXISTS `table_stats` (
   PRIMARY KEY (`db_name`,`table_name`)
 ) ENGINE=Aria DEFAULT CHARSET=utf8 COLLATE=utf8_bin PAGE_CHECKSUM=1 TRANSACTIONAL=0 COMMENT='Statistics on Tables';
 
--- Dumping data for table mysql.table_stats: 0 rows
+-- Dumping data for table blokus.table_stats: 0 rows
 /*!40000 ALTER TABLE `table_stats` DISABLE KEYS */;
 /*!40000 ALTER TABLE `table_stats` ENABLE KEYS */;
 
--- Dumping structure for πίνακας mysql.time_zone
+-- Dumping structure for πίνακας blokus.time_zone
 CREATE TABLE IF NOT EXISTS `time_zone` (
   `Time_zone_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `Use_leap_seconds` enum('Y','N') NOT NULL DEFAULT 'N',
   PRIMARY KEY (`Time_zone_id`)
 ) ENGINE=Aria DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci PAGE_CHECKSUM=1 TRANSACTIONAL=1 COMMENT='Time zones';
 
--- Dumping data for table mysql.time_zone: 0 rows
+-- Dumping data for table blokus.time_zone: 0 rows
 /*!40000 ALTER TABLE `time_zone` DISABLE KEYS */;
 /*!40000 ALTER TABLE `time_zone` ENABLE KEYS */;
 
--- Dumping structure for πίνακας mysql.time_zone_leap_second
+-- Dumping structure for πίνακας blokus.time_zone_leap_second
 CREATE TABLE IF NOT EXISTS `time_zone_leap_second` (
   `Transition_time` bigint(20) NOT NULL,
   `Correction` int(11) NOT NULL,
   PRIMARY KEY (`Transition_time`)
 ) ENGINE=Aria DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci PAGE_CHECKSUM=1 TRANSACTIONAL=1 COMMENT='Leap seconds information for time zones';
 
--- Dumping data for table mysql.time_zone_leap_second: 0 rows
+-- Dumping data for table blokus.time_zone_leap_second: 0 rows
 /*!40000 ALTER TABLE `time_zone_leap_second` DISABLE KEYS */;
 /*!40000 ALTER TABLE `time_zone_leap_second` ENABLE KEYS */;
 
--- Dumping structure for πίνακας mysql.time_zone_name
+-- Dumping structure for πίνακας blokus.time_zone_name
 CREATE TABLE IF NOT EXISTS `time_zone_name` (
   `Name` char(64) NOT NULL,
   `Time_zone_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`Name`)
 ) ENGINE=Aria DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci PAGE_CHECKSUM=1 TRANSACTIONAL=1 COMMENT='Time zone names';
 
--- Dumping data for table mysql.time_zone_name: 0 rows
+-- Dumping data for table blokus.time_zone_name: 0 rows
 /*!40000 ALTER TABLE `time_zone_name` DISABLE KEYS */;
 /*!40000 ALTER TABLE `time_zone_name` ENABLE KEYS */;
 
--- Dumping structure for πίνακας mysql.time_zone_transition
+-- Dumping structure for πίνακας blokus.time_zone_transition
 CREATE TABLE IF NOT EXISTS `time_zone_transition` (
   `Time_zone_id` int(10) unsigned NOT NULL,
   `Transition_time` bigint(20) NOT NULL,
@@ -2559,11 +2652,11 @@ CREATE TABLE IF NOT EXISTS `time_zone_transition` (
   PRIMARY KEY (`Time_zone_id`,`Transition_time`)
 ) ENGINE=Aria DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci PAGE_CHECKSUM=1 TRANSACTIONAL=1 COMMENT='Time zone transitions';
 
--- Dumping data for table mysql.time_zone_transition: 0 rows
+-- Dumping data for table blokus.time_zone_transition: 0 rows
 /*!40000 ALTER TABLE `time_zone_transition` DISABLE KEYS */;
 /*!40000 ALTER TABLE `time_zone_transition` ENABLE KEYS */;
 
--- Dumping structure for πίνακας mysql.time_zone_transition_type
+-- Dumping structure for πίνακας blokus.time_zone_transition_type
 CREATE TABLE IF NOT EXISTS `time_zone_transition_type` (
   `Time_zone_id` int(10) unsigned NOT NULL,
   `Transition_type_id` int(10) unsigned NOT NULL,
@@ -2573,11 +2666,11 @@ CREATE TABLE IF NOT EXISTS `time_zone_transition_type` (
   PRIMARY KEY (`Time_zone_id`,`Transition_type_id`)
 ) ENGINE=Aria DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci PAGE_CHECKSUM=1 TRANSACTIONAL=1 COMMENT='Time zone transition types';
 
--- Dumping data for table mysql.time_zone_transition_type: 0 rows
+-- Dumping data for table blokus.time_zone_transition_type: 0 rows
 /*!40000 ALTER TABLE `time_zone_transition_type` DISABLE KEYS */;
 /*!40000 ALTER TABLE `time_zone_transition_type` ENABLE KEYS */;
 
--- Dumping structure for πίνακας mysql.transaction_registry
+-- Dumping structure for πίνακας blokus.transaction_registry
 CREATE TABLE IF NOT EXISTS `transaction_registry` (
   `transaction_id` bigint(20) unsigned NOT NULL,
   `commit_id` bigint(20) unsigned NOT NULL,
@@ -2590,9 +2683,9 @@ CREATE TABLE IF NOT EXISTS `transaction_registry` (
   KEY `commit_timestamp` (`commit_timestamp`,`transaction_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin STATS_PERSISTENT=0;
 
--- Dumping data for table mysql.transaction_registry: ~0 rows (approximately)
+-- Dumping data for table blokus.transaction_registry: ~0 rows (approximately)
 
--- Dumping structure for view mysql.user
+-- Dumping structure for view blokus.user
 -- Creating temporary table to overcome VIEW dependency errors
 CREATE TABLE `user` (
 	`Host` CHAR(60) NOT NULL COLLATE 'utf8_bin',
@@ -2644,19 +2737,23 @@ CREATE TABLE `user` (
 	`max_statement_time` DECIMAL(12,6) NOT NULL
 ) ENGINE=MyISAM;
 
--- Dumping structure for πίνακας mysql.users
+-- Dumping structure for πίνακας blokus.users
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(20) DEFAULT NULL,
   `password` varbinary(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table mysql.users: ~1 rows (approximately)
+-- Dumping data for table blokus.users: ~5 rows (approximately)
 INSERT INTO `users` (`id`, `username`, `password`) VALUES
-	(1, 'nivog', _binary 0x323538);
+	(1, 'nivog', _binary 0x323538),
+	(2, 'cola', _binary 0x313437),
+	(3, 'alex', _binary 0x313233),
+	(4, 'CaptainRexGr', _binary 0x3132333435363738),
+	(5, 'fng', _binary 0x676867);
 
--- Dumping structure for view mysql.user
+-- Dumping structure for view blokus.user
 -- Removing temporary table and create final VIEW structure
 DROP TABLE IF EXISTS `user`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `user` AS select `global_priv`.`Host` AS `Host`,`global_priv`.`User` AS `User`,if(json_value(`global_priv`.`Priv`,'$.plugin') in ('mysql_native_password','mysql_old_password'),ifnull(json_value(`global_priv`.`Priv`,'$.authentication_string'),''),'') AS `Password`,if(json_value(`global_priv`.`Priv`,'$.access') & 1,'Y','N') AS `Select_priv`,if(json_value(`global_priv`.`Priv`,'$.access') & 2,'Y','N') AS `Insert_priv`,if(json_value(`global_priv`.`Priv`,'$.access') & 4,'Y','N') AS `Update_priv`,if(json_value(`global_priv`.`Priv`,'$.access') & 8,'Y','N') AS `Delete_priv`,if(json_value(`global_priv`.`Priv`,'$.access') & 16,'Y','N') AS `Create_priv`,if(json_value(`global_priv`.`Priv`,'$.access') & 32,'Y','N') AS `Drop_priv`,if(json_value(`global_priv`.`Priv`,'$.access') & 64,'Y','N') AS `Reload_priv`,if(json_value(`global_priv`.`Priv`,'$.access') & 128,'Y','N') AS `Shutdown_priv`,if(json_value(`global_priv`.`Priv`,'$.access') & 256,'Y','N') AS `Process_priv`,if(json_value(`global_priv`.`Priv`,'$.access') & 512,'Y','N') AS `File_priv`,if(json_value(`global_priv`.`Priv`,'$.access') & 1024,'Y','N') AS `Grant_priv`,if(json_value(`global_priv`.`Priv`,'$.access') & 2048,'Y','N') AS `References_priv`,if(json_value(`global_priv`.`Priv`,'$.access') & 4096,'Y','N') AS `Index_priv`,if(json_value(`global_priv`.`Priv`,'$.access') & 8192,'Y','N') AS `Alter_priv`,if(json_value(`global_priv`.`Priv`,'$.access') & 16384,'Y','N') AS `Show_db_priv`,if(json_value(`global_priv`.`Priv`,'$.access') & 32768,'Y','N') AS `Super_priv`,if(json_value(`global_priv`.`Priv`,'$.access') & 65536,'Y','N') AS `Create_tmp_table_priv`,if(json_value(`global_priv`.`Priv`,'$.access') & 131072,'Y','N') AS `Lock_tables_priv`,if(json_value(`global_priv`.`Priv`,'$.access') & 262144,'Y','N') AS `Execute_priv`,if(json_value(`global_priv`.`Priv`,'$.access') & 524288,'Y','N') AS `Repl_slave_priv`,if(json_value(`global_priv`.`Priv`,'$.access') & 1048576,'Y','N') AS `Repl_client_priv`,if(json_value(`global_priv`.`Priv`,'$.access') & 2097152,'Y','N') AS `Create_view_priv`,if(json_value(`global_priv`.`Priv`,'$.access') & 4194304,'Y','N') AS `Show_view_priv`,if(json_value(`global_priv`.`Priv`,'$.access') & 8388608,'Y','N') AS `Create_routine_priv`,if(json_value(`global_priv`.`Priv`,'$.access') & 16777216,'Y','N') AS `Alter_routine_priv`,if(json_value(`global_priv`.`Priv`,'$.access') & 33554432,'Y','N') AS `Create_user_priv`,if(json_value(`global_priv`.`Priv`,'$.access') & 67108864,'Y','N') AS `Event_priv`,if(json_value(`global_priv`.`Priv`,'$.access') & 134217728,'Y','N') AS `Trigger_priv`,if(json_value(`global_priv`.`Priv`,'$.access') & 268435456,'Y','N') AS `Create_tablespace_priv`,if(json_value(`global_priv`.`Priv`,'$.access') & 536870912,'Y','N') AS `Delete_history_priv`,elt(ifnull(json_value(`global_priv`.`Priv`,'$.ssl_type'),0) + 1,'','ANY','X509','SPECIFIED') AS `ssl_type`,ifnull(json_value(`global_priv`.`Priv`,'$.ssl_cipher'),'') AS `ssl_cipher`,ifnull(json_value(`global_priv`.`Priv`,'$.x509_issuer'),'') AS `x509_issuer`,ifnull(json_value(`global_priv`.`Priv`,'$.x509_subject'),'') AS `x509_subject`,cast(ifnull(json_value(`global_priv`.`Priv`,'$.max_questions'),0) as unsigned) AS `max_questions`,cast(ifnull(json_value(`global_priv`.`Priv`,'$.max_updates'),0) as unsigned) AS `max_updates`,cast(ifnull(json_value(`global_priv`.`Priv`,'$.max_connections'),0) as unsigned) AS `max_connections`,cast(ifnull(json_value(`global_priv`.`Priv`,'$.max_user_connections'),0) as signed) AS `max_user_connections`,ifnull(json_value(`global_priv`.`Priv`,'$.plugin'),'') AS `plugin`,ifnull(json_value(`global_priv`.`Priv`,'$.authentication_string'),'') AS `authentication_string`,if(ifnull(json_value(`global_priv`.`Priv`,'$.password_last_changed'),1) = 0,'Y','N') AS `password_expired`,elt(ifnull(json_value(`global_priv`.`Priv`,'$.is_role'),0) + 1,'N','Y') AS `is_role`,ifnull(json_value(`global_priv`.`Priv`,'$.default_role'),'') AS `default_role`,cast(ifnull(json_value(`global_priv`.`Priv`,'$.max_statement_time'),0.0) as decimal(12,6)) AS `max_statement_time` from `global_priv`;
