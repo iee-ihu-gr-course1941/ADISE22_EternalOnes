@@ -1,5 +1,6 @@
 <?php
 function show_board() {
+	global $mysqli;
 	$sql = 'select * from board';
 	$st = $mysqli->prepare($sql);
 
