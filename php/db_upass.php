@@ -1,6 +1,5 @@
 <?php
  
- $DB_USER = "it164644";
- $DB_PASS = "";
-
+    $DB_PASS = '';
+    $DB_USER = 'it164644';
 ?>
