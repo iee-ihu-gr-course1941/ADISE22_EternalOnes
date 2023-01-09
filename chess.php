@@ -1,8 +1,8 @@
 <?php
-require_once "../lib/dbconnect.php";
-require_once "../lib/board.php";
-require_once "../lib/game.php";
-require_once "../lib/users.php";
+require_once "./php/connection.php";
+require_once "./php/board.php";
+require_once "./php/game.php";
+// require_once "./php/users.php";
 
 $method = $_SERVER['REQUEST_METHOD'];
 $request = explode('/', trim($_SERVER['PATH_INFO'],'/'));
