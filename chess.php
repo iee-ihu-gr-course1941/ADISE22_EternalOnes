@@ -1,7 +1,7 @@
 <?php
 
-require_once "./php/connection.php";
-require_once "./php/board.php";
+require_once "php/connection.php";
+require_once "php/board.php";
 
 $method = $_SERVER['REQUEST_METHOD'];
 $request = explode('/', trim($_SERVER['PATH_INFO'],'/'));
