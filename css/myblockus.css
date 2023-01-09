@@ -1,6 +1,18 @@
-#chess_table td{
+#blokus_table td{
     width: 30px;
     height: 30px;
     border: solid black 1px;
     
+
+    
 }
+
+#blokus_table{
+
+    margin-left:auto; 
+    margin-right:auto; 
+    
+
+
+}
+
