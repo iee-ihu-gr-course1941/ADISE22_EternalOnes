@@ -7,12 +7,46 @@
     
 }
 
-#blokus_table{
+#blokus_board{
+    margin-left: auto;
+    margin-right: auto;
+}
 
-    margin-left:auto; 
-    margin-right:auto; 
+#blokus_table{
+    
+
+    margin-left: auto;
+    margin-right: auto;
+
     
 
 
 }
 
+#red {
+
+    
+
+    padding: 25px;
+
+    text-align: center;
+    
+    
+}
+
+#blue {
+    text-align: center;
+    padding: 25px;
+
+}
+
+#yellow {
+    text-align: center;
+    padding: 25px;
+}
+
+#green {
+
+    text-align: center;
+    padding: 25px;
+}
